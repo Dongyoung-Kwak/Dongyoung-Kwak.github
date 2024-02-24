@@ -28,8 +28,31 @@
 >##### 웹 페이지와 서버 간의 통신을 위한 코드 작성
 <details>
   <summary>관련 문서</summary>
+ <details>
+  <summary>
+   프로젝트 기획서
+  </summary>
+  <img src="https://github.com/Dongyoung-Kwak/Dongyoung-Kwak.github/assets/147033486/7a57c2da-2767-4d44-bd86-013aa7678ff2">
+  <img src="https://github.com/Dongyoung-Kwak/Dongyoung-Kwak.github/assets/147033486/0efc5123-1d09-405a-9243-9a55ad1c25a2">
+  <img src="https://github.com/Dongyoung-Kwak/Dongyoung-Kwak.github/assets/147033486/840aadc6-0204-4da3-8330-3d8f71f34c2c">
+  <img src="https://github.com/Dongyoung-Kwak/Dongyoung-Kwak.github/assets/147033486/c8002900-4a08-40b7-bd94-54a83ac374e6">
+  <img src="https://github.com/Dongyoung-Kwak/Dongyoung-Kwak.github/assets/147033486/d4dde4f5-67dd-4c2d-92cc-26dfbe9607d4">
+ </details>
+  
+ <details>
+  <summary>개발 스케줄표</summary>
+  <img src="https://github.com/Dongyoung-Kwak/Dongyoung-Kwak.github/assets/147033486/26b24381-2925-46b7-9994-3d8f67ca3ee8">
+  <img src="https://github.com/Dongyoung-Kwak/Dongyoung-Kwak.github/assets/147033486/63e07a21-0658-4f34-b161-2a36331a8de7">
+ </details>
   <details>
     <summary>화면 설계서</summary>
-    
+    <img src="https://github.com/Dongyoung-Kwak/Dongyoung-Kwak.github/assets/147033486/366b7f3c-843c-48ac-9533-5aa0105c62bf">
+    <img src="https://github.com/Dongyoung-Kwak/Dongyoung-Kwak.github/assets/147033486/f497932f-84f6-4cb9-9c74-83c81719c56e">
+    <img src="https://github.com/Dongyoung-Kwak/Dongyoung-Kwak.github/assets/147033486/0ee5c2d6-45d0-428b-ab97-ebe5af8be500">
   </details>
+ <details>
+<summary>요구사항 정의서</summary>
+  <img src="https://github.com/Dongyoung-Kwak/Dongyoung-Kwak.github/assets/147033486/e2a9950f-fffd-4017-8d2f-9b17aac03c67">
+  <img src="https://github.com/Dongyoung-Kwak/Dongyoung-Kwak.github/assets/147033486/81505a5b-ee14-4410-aa53-cc6b76164b9f">
+ </details> 
 </details>    
