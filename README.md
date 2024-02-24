@@ -1,18 +1,32 @@
 ### Backend Engineer
 
-# <img src="https://github.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/blob/master/Emojis/People/Technologist.png" alt="profile" width="5%"> PROFILE
+# <img src="https://github.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/blob/master/Emojis/Objects/Identification%20Card.png" alt="profile" width="4%"> Profile
  
- 1994년 3월 12일 출생
+>#### 1994년 3월 12일 출생
  
- <img src="https://github.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/blob/master/Emojis/Travel%20and%20places/School.png" alt="Eyes" width="2%" /> 명지대학교(정치외교학과) 졸업(2013.03 ~ 2023.02)
- <img src="https://github.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/blob/master/Emojis/Travel%20and%20places/School.png" alt="Eyes" width="2%" /> 
+>#### <img src="https://github.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/blob/master/Emojis/Travel%20and%20places/School.png" alt="Eyes" width="2%" > 명지대학교(정치외교학과) 졸업(2013.03 ~ 2023.02)
  
- 
-# <img src="https://github.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/blob/master/Emojis/Objects/Spiral%20Notepad.png" alt="profile" width="5%"> PROJECT
+
+# <img src="https://github.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/blob/master/Emojis/Objects/Open%20Mailbox%20with%20Raised%20Flag.png" alt="info" width="4%">Contact information
+
+>#### <img src="https://github.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/blob/master/Emojis/Objects/E-Mail.png" alt="email" width="3%" > wlsdlseowk@gmail.com
+>#### <img src="https://github.com/Dongyoung-Kwak/Portfolio/assets/147033486/e8e11bde-6c96-4e76-b58d-e1cd8661a827" alt="github" width="3%">[github](https://github.com/Dongyoung-Kwak)
+
+ # Skill
+
+>## Backend
+>>### <img src="https://img.shields.io/badge/Apache Tomcat-F8DC75?style=flat-square&logo=apachetomcat&logoColor=black"/> <img src="https://img.shields.io/badge/Spring-6DB33F?style=flat-square&logo=Spring&logoColor=white"/>
+>## Frontend
+>>### <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white"/> <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white"/> <img src="https://img.shields.io/badge/Bootstrapap-7952B3?style=flat-square&logo=bootstrap&logoColor=white"/> 
+>## Languange
+>>###  <img src="https://img.shields.io/badge/java-007396?style=flat-square&logo=java&logoColor=white"/> <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black"/>
+>## Tools
+>> ### <img src="https://img.shields.io/badge/Visual Studio Code-007ACC?style=flat-square&logo=Visual Studio Code&logoColor=white"/> <img src="https://img.shields.io/badge/ORACLE-F80000?style=flat-square&logo=oracle&logoColor=white"/>
+# <img src="https://github.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/blob/master/Emojis/Objects/Spiral%20Notepad.png" alt="profile" width="3%" > Project
 
 ## [2023.11 ~ 2024.03]
 
-### <img src="https://github.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/blob/master/Emojis/Travel%20and%20places/Hospital.png" alt="profile" width="5%"> 신도시의 성공적인 병·의원 개원을 위한 입지분석 서비스
+### <img src="https://github.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/blob/master/Emojis/Travel%20and%20places/Hospital.png" alt="profile" width="4%"> 신도시의 성공적인 병·의원 개원을 위한 입지분석 서비스
 
 #### 목표 
 >##### 신도시에서 개원을 하고자 하는 사용자를 위한 서비스 개발
