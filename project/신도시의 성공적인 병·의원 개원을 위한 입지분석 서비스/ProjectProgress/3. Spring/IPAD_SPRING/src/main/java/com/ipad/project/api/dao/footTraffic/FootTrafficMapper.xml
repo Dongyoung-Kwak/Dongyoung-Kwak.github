@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="com.ipad.project.api.dao.footTraffic.IFootTrafficRepository">
+		<insert id="saveRecord" parameterType="com.ipad.project.api.model.footTraffic.FootTrafficVO">
+			<if test="adstrd_cd_nm == '위례동'">
+			INSERT INTO FOOT_TRAFFIC (ADM_CD, QUATER, POPULATION_TOTAL, POPULATION_MON, POPULATION_TUES, 
+			POPULATION_WED, POPULATION_THUR, POPULATION_FRI, POPULATION_SAT, POPULATION_SUN)
+			 VALUES ("11240820", #{quarter}, #{population_total}, #{population_mon}, #{population_tues}, 
+			 #{population_wed}, #{population_thur}, #{population_fri}, #{population_sat}, #{population_sun} )
+			</if>
+		</insert>
+		
+		<update id="updateDate" parameterType="com.ipad.project.api.model.footTraffic.FootTrafficVO">
+			<if test="adstrd_cd_nm == '위례동'">
+			UPDATE FOOT_TRAFFIC SET POPULATION_TOTAL = #{population_total}, POPULATION_MON = #{population_mon}, POPULATION_TUES = #{population_tues},
+			POPULATION_WED = #{population_wed}, POPULATION_THUR= #{population_thur}, POPULATION_FRI = #{population_fri}, POPULATION_SAT=#{population_sat},
+			POPULATION_SUN = #{population_sun} WHERE ADM_CD = "11240820" AND QUARTER = #{quarter}
+			</if>
+		</update>
+	</mapper>

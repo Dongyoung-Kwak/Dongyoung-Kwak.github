@@ -1,4 +1,6 @@
+
 window.onload = function () {
+
 	fetchData();
 	$.getJSON(contextPath + "/json/emd.geojson", function (geojson) {
 		var data = geojson.features;
@@ -15,6 +17,7 @@ window.onload = function () {
 			}
 		});
 	});
+
 }
 
 function writeRankList() {
@@ -230,10 +233,12 @@ function hanamHosLoc() {
 }
 
 // json으로 가져오기----------------------------------------------------------------
-var array = [];
 
+
+var array = [];
 function fetchData() {
-	fetch(contextPath + '/json/map.do')
+
+	fetch(contextPath + '/json/map')
 		.then(response => {
 			if (!response.ok) {
 				throw new Error('네트워크 응답이 올바르지 않습니다.');
@@ -267,6 +272,7 @@ function fetcPredictData(regionName) {
 			return response.json();
 		})
 		.then(data => {
+
 			predictData.length = 0;
 			predictData.push(data.predictPatient);
 			predictData.push(data.employee);
@@ -285,9 +291,9 @@ function fetcPredictData(regionName) {
 function hanamHos() {
 
 	array.forEach(data => {
-		if (data.region == '하남시' && data.business_status == '영업/정상') {
+		if (data.REGION == '하남시' && data.BUSINESS_STATUS == '영업/정상') {
 			displayMarker(data, openHosImg);
-		} else if (data.region == '하남시' && data.business_status != '영업/정상') {
+		} else if (data.REGION == '하남시' && data.BUSINESS_STATUS != '영업/정상') {
 			displayMarker(data, closeHosImg);
 		}
 	});
@@ -295,9 +301,9 @@ function hanamHos() {
 
 function sungnamHos() {
 	array.forEach(data => {
-		if (data.region == '성남시' && data.business_status == '영업/정상') {
+		if (data.REGION == '성남시' && data.BUSINESS_STATUS == '영업/정상') {
 			displayMarker(data, openHosImg);
-		} else if (data.region == '성남시' && data.business_status != '영업/정상') {
+		} else if (data.REGION == '성남시' && data.BUSINESS_STATUS != '영업/정상') {
 			displayMarker(data, closeHosImg);
 		}
 	});
@@ -305,9 +311,9 @@ function sungnamHos() {
 
 function songpaHos() {
 	array.forEach(data => {
-		if (data.region == '송파구' && data.business_status == '영업/정상') {
+		if (data.REGION == '송파구' && data.BUSINESS_STATUS == '영업/정상') {
 			displayMarker(data, openHosImg);
-		} else if (data.region == '송파구' && data.business_status != '영업/정상') {
+		} else if (data.REGION == '송파구' && data.BUSINESS_STATUS != '영업/정상') {
 			displayMarker(data, closeHosImg);
 		}
 	});
@@ -320,7 +326,6 @@ var overlayDel = new kakao.maps.CustomOverlay({
 	yAnchor: 3,
 	position: null
 });
-
 var openHosImg = contextPath + "/img/hosMark.png";
 var closeHosImg = contextPath + "/img/closeHosMark.png";
 var imageSize = new kakao.maps.Size(20, 20);
@@ -330,10 +335,10 @@ var hosLoc = document.getElementById('hosLoc');
 var currentInfoWindow = null;
 
 function displayMarker(data, img) {
+
 	// 마커 이미지 및 위치 설정
 	var markerImage = new kakao.maps.MarkerImage(img, imageSize);
-	var position = new kakao.maps.LatLng(Number(data.x_coordinate), Number(data.y_coordinate));
-
+	var position = new kakao.maps.LatLng(Number(data.X_COORDINATE), Number(data.Y_COORDINATE));
 	// 마커 생성
 	var marker = new kakao.maps.Marker({
 		map: map,
@@ -342,20 +347,29 @@ function displayMarker(data, img) {
 	});
 	markerArr.push(marker);
 
+	var licenseDate = new Date(data.LICENSE_DATE);
+	var closeDate = new Date(data.CLOSE_DATE);
 	var infoContent = img == closeHosImg ?
-		'폐업일: ' + data.close_date :
-		'개업일: ' + data.license_date;
+		'개업일: ' + licenseDate.getFullYear() + "-" + ('0' + (licenseDate.getMonth() + 1)).slice(-2) + "-" + ('0' + (licenseDate.getDate() + 1)).slice(-2) + "<br>" +
+		'폐업일: ' + closeDate.getFullYear() + "-" + ('0' + (closeDate.getMonth() + 1)).slice(-2) + "-" + ('0' + (closeDate.getDate() + 1)).slice(-2) :
+		'개업일: ' + licenseDate.getFullYear() + "-" + ('0' + (licenseDate.getMonth() + 1)).slice(-2) + "-" + ('0' + (licenseDate.getDate() + 1)).slice(-2)
+		;
 
-	var infowindow = new kakao.maps.InfoWindow({
-		content: '<div id="infoWindow">' +
-			'<strong>' + data.hospital_name + '</strong><br>' +
+	var infowindow = img == closeHosImg ? new kakao.maps.InfoWindow({
+		content: '<div id="infoWindow" style="height:100px";>' +
+			'<strong>' + data.HOSPITAL_NAME + '</strong><br>' +
 			infoContent +
 			'</div>',
 		removable: true  // 기본 InfoWindow 디자인 사용
-	});
-
-
-
+	}) :
+		new kakao.maps.InfoWindow({
+			content: '<div id="infoWindow">' +
+				'<strong>' + data.HOSPITAL_NAME + '</strong><br>' +
+				infoContent +
+				'</div>',
+			removable: true  // 기본 InfoWindow 디자인 사용
+		})
+		;
 
 
 	kakao.maps.event.addListener(marker, 'click', function () {

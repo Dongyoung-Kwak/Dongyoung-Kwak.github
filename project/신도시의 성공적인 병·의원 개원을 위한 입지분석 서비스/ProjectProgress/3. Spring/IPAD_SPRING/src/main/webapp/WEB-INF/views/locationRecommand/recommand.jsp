@@ -27,8 +27,11 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <title>추천 지역</title>
 <script>
-	var contextPath = "${pageContext.request.contextPath}";
+var contextPath = "${pageContext.request.contextPath}";
+
 </script>
+	
+
 </head>
 
 <body class="vh-100 overflow-hiddden">

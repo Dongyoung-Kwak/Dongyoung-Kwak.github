@@ -38,10 +38,6 @@ public class RecommandService implements IRecommandService {
 		return getTop3List(voss);
 	}
 
-	@Override
-	public RecommandVO regionInfo(String adm_nm) {
-		return recommandRepository.regionInfo(adm_nm);
-	}
 
 	@Override
 	public int avgData(String data) {

@@ -8,7 +8,6 @@ import com.ipad.project.locationRecommand.model.RecommandVO;
 
 public interface IRecommandService {
 	List<RecommandVO> recommandRegion(boolean opt1, boolean opt2);
-	RecommandVO regionInfo(String adm_nm);
 	
 	int avgData(String data);
 	void setSaleScore(RecommandVO dto);

@@ -4,11 +4,12 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import com.ipad.project.locationRecommand.model.RecommandVO;
 
+@Repository
 public interface IRecommandRepository {
-	RecommandVO regionInfo(@Param("adm_nm") String adm_nm);
 
 	int avgData(String data);
 

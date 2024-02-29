@@ -10,6 +10,13 @@ public class RecommandVO {
 	String adm_cd;
 	String adm_nm;
 	String option;
+	
+	double saleScore;
+	double teensScore;
+	double twentiesScore;
+	double sixtiesScore;
+	double over70sScore;
+	double totalScore;
 	public String getOption() {
 		return option;
 	}
@@ -33,15 +40,7 @@ public class RecommandVO {
 	}
 	public void setAdm_nm(String adm_nm) {
 		this.adm_nm = adm_nm;
-	}
-	double saleScore;
-	double teensScore;
-	double twentiesScore;
-	double sixtiesScore;
-	double over70sScore;
-	double totalScore;
-	
-	
+	}		
 	
 	public double getTeensScore() {
 		return teensScore;
