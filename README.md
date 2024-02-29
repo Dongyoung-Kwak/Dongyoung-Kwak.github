@@ -41,7 +41,7 @@
   <summary>관련 문서</summary>
  
   <summary> 
-  <a href="https://github.com/Dongyoung-Kwak/Portfolio/blob/main/project/%EC%8B%A0%EB%8F%84%EC%8B%9C%EC%9D%98%20%EC%84%B1%EA%B3%B5%EC%A0%81%EC%9D%B8%20%EB%B3%91%C2%B7%EC%9D%98%EC%9B%90%20%EA%B0%9C%EC%9B%90%EC%9D%84%20%EC%9C%84%ED%95%9C%20%EC%9E%85%EC%A7%80%EB%B6%84%EC%84%9D%20%EC%84%9C%EB%B9%84%EC%8A%A4/Documentation/1.%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B8%B0%ED%9A%8D%EC%84%9C/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EA%B8%B0%ED%9A%8D%EC%84%9C.pdf">프로젝트 기획서(클릭)</a>
+  <a href="https://github.com/Dongyoung-Kwak/Portfolio/blob/main/project/%EC%8B%A0%EB%8F%84%EC%8B%9C%EC%9D%98%20%EC%84%B1%EA%B3%B5%EC%A0%81%EC%9D%B8%20%EB%B3%91%C2%B7%EC%9D%98%EC%9B%90%20%EA%B0%9C%EC%9B%90%EC%9D%84%20%EC%9C%84%ED%95%9C%20%EC%9E%85%EC%A7%80%EB%B6%84%EC%84%9D%20%EC%84%9C%EB%B9%84%EC%8A%A4/Documentation/1.%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B8%B0%ED%9A%8D%EC%84%9C/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EA%B8%B0%ED%9A%8D%EC%84%9C.pdf">프로젝트 기획서</a>
   </summary> 
  <summary> 
   <summary><a href="https://github.com/Dongyoung-Kwak/Portfolio/tree/main/project/%EC%8B%A0%EB%8F%84%EC%8B%9C%EC%9D%98%20%EC%84%B1%EA%B3%B5%EC%A0%81%EC%9D%B8%20%EB%B3%91%C2%B7%EC%9D%98%EC%9B%90%20%EA%B0%9C%EC%9B%90%EC%9D%84%20%EC%9C%84%ED%95%9C%20%EC%9E%85%EC%A7%80%EB%B6%84%EC%84%9D%20%EC%84%9C%EB%B9%84%EC%8A%A4/Documentation/2.%20%EA%B0%9C%EB%B0%9C%20%EA%B3%84%ED%9A%8D%EC%84%9C">개발 계획서</a></summary>
@@ -52,7 +52,7 @@
 <summary>
 
 <summary>
- <a href="https://github.com/Dongyoung-Kwak/Portfolio/tree/main/project/%EC%8B%A0%EB%8F%84%EC%8B%9C%EC%9D%98%20%EC%84%B1%EA%B3%B5%EC%A0%81%EC%9D%B8%20%EB%B3%91%C2%B7%EC%9D%98%EC%9B%90%20%EA%B0%9C%EC%9B%90%EC%9D%84%20%EC%9C%84%ED%95%9C%20%EC%9E%85%EC%A7%80%EB%B6%84%EC%84%9D%20%EC%84%9C%EB%B9%84%EC%8A%A4/Documentation/3.%20%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD%20%EC%A0%95%EC%9D%98%EC%84%9C%2C%EB%B6%84%EC%84%9D%EC%84%9C">요구사항 정의</a>
+ <a href="https://github.com/Dongyoung-Kwak/Portfolio/tree/main/project/%EC%8B%A0%EB%8F%84%EC%8B%9C%EC%9D%98%20%EC%84%B1%EA%B3%B5%EC%A0%81%EC%9D%B8%20%EB%B3%91%C2%B7%EC%9D%98%EC%9B%90%20%EA%B0%9C%EC%9B%90%EC%9D%84%20%EC%9C%84%ED%95%9C%20%EC%9E%85%EC%A7%80%EB%B6%84%EC%84%9D%20%EC%84%9C%EB%B9%84%EC%8A%A4/Documentation/3.%20%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD%20%EC%A0%95%EC%9D%98%EC%84%9C%2C%EB%B6%84%EC%84%9D%EC%84%9C">요구사항 정의서</a>
 
  </summary>    
      <summary>
