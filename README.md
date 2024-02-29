@@ -40,27 +40,25 @@
 <details>
   <summary>관련 문서</summary>
  
-  <summary>
-   <a href="https://github.com/Dongyoung-Kwak/Portfolio/blob/main/project/%EC%8B%A0%EB%8F%84%EC%8B%9C%EC%9D%98%20%EC%84%B1%EA%B3%B5%EC%A0%81%EC%9D%B8%20%EB%B3%91%C2%B7%EC%9D%98%EC%9B%90%20%EA%B0%9C%EC%9B%90%EC%9D%84%20%EC%9C%84%ED%95%9C%20%EC%9E%85%EC%A7%80%EB%B6%84%EC%84%9D%20%EC%84%9C%EB%B9%84%EC%8A%A4/Documentation/1.%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B8%B0%ED%9A%8D%EC%84%9C/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EA%B8%B0%ED%9A%8D%EC%84%9C.pdf" target="_blank">프로젝트 기획서</a>
-   
-  </summary>
-  
- 
-  
+  <summary> 
+   [프로젝트 기획서] <https://github.com/Dongyoung-Kwak/Portfolio/blob/main/project/%EC%8B%A0%EB%8F%84%EC%8B%9C%EC%9D%98%20%EC%84%B1%EA%B3%B5%EC%A0%81%EC%9D%B8%20%EB%B3%91%C2%B7%EC%9D%98%EC%9B%90%20%EA%B0%9C%EC%9B%90%EC%9D%84%20%EC%9C%84%ED%95%9C%20%EC%9E%85%EC%A7%80%EB%B6%84%EC%84%9D%20%EC%84%9C%EB%B9%84%EC%8A%A4/Documentation/1.%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B8%B0%ED%9A%8D%EC%84%9C/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EA%B8%B0%ED%9A%8D%EC%84%9C.pdf>
+  </summary> 
+ <summary>
  <details>
   <summary>개발 스케줄표</summary>
   <img src="https://github.com/Dongyoung-Kwak/Dongyoung-Kwak.github/assets/147033486/26b24381-2925-46b7-9994-3d8f67ca3ee8">
   <img src="https://github.com/Dongyoung-Kwak/Dongyoung-Kwak.github/assets/147033486/63e07a21-0658-4f34-b161-2a36331a8de7">
  </details>
-  <details>
-    <summary>화면 설계서</summary>
-    <img src="https://github.com/Dongyoung-Kwak/Dongyoung-Kwak.github/assets/147033486/366b7f3c-843c-48ac-9533-5aa0105c62bf">
-    <img src="https://github.com/Dongyoung-Kwak/Dongyoung-Kwak.github/assets/147033486/f497932f-84f6-4cb9-9c74-83c81719c56e">
-    <img src="https://github.com/Dongyoung-Kwak/Dongyoung-Kwak.github/assets/147033486/0ee5c2d6-45d0-428b-ab97-ebe5af8be500">
-  </details>
+ </summary>
+<summary>
+    [화면 설계서] <https://github.com/Dongyoung-Kwak/Portfolio/blob/main/project/%EC%8B%A0%EB%8F%84%EC%8B%9C%EC%9D%98%20%EC%84%B1%EA%B3%B5%EC%A0%81%EC%9D%B8%20%EB%B3%91%C2%B7%EC%9D%98%EC%9B%90%20%EA%B0%9C%EC%9B%90%EC%9D%84%20%EC%9C%84%ED%95%9C%20%EC%9E%85%EC%A7%80%EB%B6%84%EC%84%9D%20%EC%84%9C%EB%B9%84%EC%8A%A4/Documentation/4.%20%ED%99%94%EB%A9%B4%20%EC%84%A4%EA%B3%84%EC%84%9C/%ED%99%94%EB%A9%B4%EC%84%A4%EA%B3%84%EC%84%9C.pdf>
+</summary>
+<summary>
  <details>
 <summary>요구사항 정의서</summary>
   <img src="https://github.com/Dongyoung-Kwak/Dongyoung-Kwak.github/assets/147033486/e2a9950f-fffd-4017-8d2f-9b17aac03c67">
   <img src="https://github.com/Dongyoung-Kwak/Dongyoung-Kwak.github/assets/147033486/81505a5b-ee14-4410-aa53-cc6b76164b9f">
  </details> 
+ </summary>    
+     <summary>빅데이터 분석서</summary>
 </details>    
