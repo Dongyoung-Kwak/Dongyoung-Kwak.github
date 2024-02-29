@@ -39,16 +39,13 @@
 >##### 웹 페이지와 서버 간의 통신을 위한 코드 작성
 <details>
   <summary>관련 문서</summary>
- <details>
+ 
   <summary>
-   프로젝트 기획서
+   <a href="https://github.com/Dongyoung-Kwak/Portfolio/blob/main/project/%EC%8B%A0%EB%8F%84%EC%8B%9C%EC%9D%98%20%EC%84%B1%EA%B3%B5%EC%A0%81%EC%9D%B8%20%EB%B3%91%C2%B7%EC%9D%98%EC%9B%90%20%EA%B0%9C%EC%9B%90%EC%9D%84%20%EC%9C%84%ED%95%9C%20%EC%9E%85%EC%A7%80%EB%B6%84%EC%84%9D%20%EC%84%9C%EB%B9%84%EC%8A%A4/Documentation/1.%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B8%B0%ED%9A%8D%EC%84%9C/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EA%B8%B0%ED%9A%8D%EC%84%9C.pdf" target="_blank">프로젝트 기획서</a>
+   
   </summary>
-  <img src="https://github.com/Dongyoung-Kwak/Dongyoung-Kwak.github/assets/147033486/7a57c2da-2767-4d44-bd86-013aa7678ff2">
-  <img src="https://github.com/Dongyoung-Kwak/Dongyoung-Kwak.github/assets/147033486/0efc5123-1d09-405a-9243-9a55ad1c25a2">
-  <img src="https://github.com/Dongyoung-Kwak/Dongyoung-Kwak.github/assets/147033486/840aadc6-0204-4da3-8330-3d8f71f34c2c">
-  <img src="https://github.com/Dongyoung-Kwak/Dongyoung-Kwak.github/assets/147033486/c8002900-4a08-40b7-bd94-54a83ac374e6">
-  <img src="https://github.com/Dongyoung-Kwak/Dongyoung-Kwak.github/assets/147033486/d4dde4f5-67dd-4c2d-92cc-26dfbe9607d4">
- </details>
+  
+ 
   
  <details>
   <summary>개발 스케줄표</summary>
