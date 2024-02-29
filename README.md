@@ -12,16 +12,13 @@
 >#### <img src="https://github.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/blob/master/Emojis/Objects/E-Mail.png" alt="email" width="3%" > wlsdlseowk@gmail.com
 >#### <img src="https://github.com/Dongyoung-Kwak/Portfolio/assets/147033486/e8e11bde-6c96-4e76-b58d-e1cd8661a827" alt="github" width="3%">[github](https://github.com/Dongyoung-Kwak)
 
- # Skill
+ # Tech Stack
 
->## Backend
->>### <img src="https://img.shields.io/badge/Apache Tomcat-F8DC75?style=flat-square&logo=apachetomcat&logoColor=black"/> <img src="https://img.shields.io/badge/Spring-6DB33F?style=flat-square&logo=Spring&logoColor=white"/>
->## Frontend
->>### <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white"/> <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white"/> <img src="https://img.shields.io/badge/Bootstrapap-7952B3?style=flat-square&logo=bootstrap&logoColor=white"/> 
->## Languange
->>###  <img src="https://img.shields.io/badge/java-007396?style=flat-square&logo=java&logoColor=white"/> <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black"/>
+>## Languange & Environment
+>>###  <img src="https://img.shields.io/badge/java-007396?style=flat-square&logo=java&logoColor=white"/> <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black"/> <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=MySQL&logoColor=white" /> <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white"/> <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white"/> <img src="https://img.shields.io/badge/Bootstrapap-7952B3?style=flat-square&logo=bootstrap&logoColor=white"/>
+>><img src="https://img.shields.io/badge/Apache Tomcat-F8DC75?style=flat-square&logo=apachetomcat&logoColor=black"/> <img src="https://img.shields.io/badge/Spring-6DB33F?style=flat-square&logo=Spring&logoColor=white"/> <img src="https://img.shields.io/badge/ORACLE-F80000?style=flat-square&logo=oracle&logoColor=white"/> <img src="https://img.shields.io/badge/Mybatis-000000?style=flat&logo=Fluentd&logoColor=white" />
 >## Tools
->> ### <img src="https://img.shields.io/badge/Visual Studio Code-007ACC?style=flat-square&logo=Visual Studio Code&logoColor=white"/> <img src="https://img.shields.io/badge/ORACLE-F80000?style=flat-square&logo=oracle&logoColor=white"/>
+>> ### <img src="https://img.shields.io/badge/Eclipse%20IDE-2C2255?style=flat&logo=EclipseIDE&logoColor=white" /> <img src="https://img.shields.io/badge/Visual Studio Code-007ACC?style=flat-square&logo=Visual Studio Code&logoColor=white"/>  <img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white" /> <img src="https://img.shields.io/badge/Tomcat-F8DC75?style=flat&logo=ApacheTomcat&logoColor=white" />
 # <img src="https://github.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/blob/master/Emojis/Objects/Spiral%20Notepad.png" alt="profile" width="3%" > Project
 
 ## [2023.11 ~ 2024.03]
@@ -42,16 +39,13 @@
 >##### 웹 페이지와 서버 간의 통신을 위한 코드 작성
 <details>
   <summary>관련 문서</summary>
- <details>
+ 
   <summary>
-   프로젝트 기획서
+   <a href="https://github.com/Dongyoung-Kwak/Portfolio/blob/main/project/%EC%8B%A0%EB%8F%84%EC%8B%9C%EC%9D%98%20%EC%84%B1%EA%B3%B5%EC%A0%81%EC%9D%B8%20%EB%B3%91%C2%B7%EC%9D%98%EC%9B%90%20%EA%B0%9C%EC%9B%90%EC%9D%84%20%EC%9C%84%ED%95%9C%20%EC%9E%85%EC%A7%80%EB%B6%84%EC%84%9D%20%EC%84%9C%EB%B9%84%EC%8A%A4/Documentation/1.%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B8%B0%ED%9A%8D%EC%84%9C/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EA%B8%B0%ED%9A%8D%EC%84%9C.pdf" target="_blank">프로젝트 기획서</a>
+   
   </summary>
-  <img src="https://github.com/Dongyoung-Kwak/Dongyoung-Kwak.github/assets/147033486/7a57c2da-2767-4d44-bd86-013aa7678ff2">
-  <img src="https://github.com/Dongyoung-Kwak/Dongyoung-Kwak.github/assets/147033486/0efc5123-1d09-405a-9243-9a55ad1c25a2">
-  <img src="https://github.com/Dongyoung-Kwak/Dongyoung-Kwak.github/assets/147033486/840aadc6-0204-4da3-8330-3d8f71f34c2c">
-  <img src="https://github.com/Dongyoung-Kwak/Dongyoung-Kwak.github/assets/147033486/c8002900-4a08-40b7-bd94-54a83ac374e6">
-  <img src="https://github.com/Dongyoung-Kwak/Dongyoung-Kwak.github/assets/147033486/d4dde4f5-67dd-4c2d-92cc-26dfbe9607d4">
- </details>
+  
+ 
   
  <details>
   <summary>개발 스케줄표</summary>
