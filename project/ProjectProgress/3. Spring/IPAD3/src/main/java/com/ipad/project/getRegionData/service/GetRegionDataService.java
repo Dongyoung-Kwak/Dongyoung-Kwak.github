@@ -21,7 +21,6 @@ public class GetRegionDataService implements IGetRegionDataService {
 
 	@Override
 	public List<HospitalDetailVO> getHospitalData() {
-		System.out.println(getRegionDataRepository.getHospitalData());
 		return getRegionDataRepository.getHospitalData();
 	}
 
