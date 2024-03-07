@@ -25,7 +25,7 @@ public class RegionDataUpdateService implements IRegionDataUpdateService {
 
 	@Autowired
 	IRegionDataUpdateRepository regionDataUpdateRepository;
-	
+
 	@Autowired
 	IGetRegionDataService getRegionDataService;
 	ArrayList<Integer> household = new ArrayList<>();
@@ -59,7 +59,7 @@ public class RegionDataUpdateService implements IRegionDataUpdateService {
 		setSubway();
 		setAgeType();
 		for (int i = 0; i < code.size(); i++) {
-			RegionDataUpdateVO vo =  new RegionDataUpdateVO();
+			RegionDataUpdateVO vo = new RegionDataUpdateVO();
 			vo.setAdm_cd(code.get(i));
 			vo.setBus(bus.get(i));
 			vo.setDentalClinic(dentalClinic.get(i));
@@ -80,7 +80,7 @@ public class RegionDataUpdateService implements IRegionDataUpdateService {
 
 	@Override
 	public void insertRegion() {
-		for(String code : code) {
+		for (String code : code) {
 			regionDataUpdateRepository.insertRegion(code);
 			regionDataUpdateRepository.insertRegionSale(code);
 		}
@@ -104,10 +104,12 @@ public class RegionDataUpdateService implements IRegionDataUpdateService {
 		map.put("adm_cd", obj.get("adm_cd").asText());
 		regionDataUpdateRepository.updatePopulation(map);
 	}
+
 	@Override
 	public Map<String, Object> convertJsonNodeToMap(JsonNode jsonNode) {
-	    ObjectMapper objectMapper = new ObjectMapper();
-	    return objectMapper.convertValue(jsonNode, new TypeReference<Map<String, Object>>() {});
+		ObjectMapper objectMapper = new ObjectMapper();
+		return objectMapper.convertValue(jsonNode, new TypeReference<Map<String, Object>>() {
+		});
 	}
 
 	@Override
@@ -131,35 +133,79 @@ public class RegionDataUpdateService implements IRegionDataUpdateService {
 	}
 
 	@Override
+	public ArrayList<String> regionCheck() {
+		return regionDataUpdateRepository.regionCheck();
+	}
+
+	@Override
 	public void insertData() {
 		JsonNode jsonData = null;
-		setVO();
-		insertRegion();
-		
-		for (RegionDataUpdateVO dto : vos) {
-			insertOtherData(dto);
-			for (int age : ageTypeList) {
-				try {
-					jsonData = parseJsonData(fetchDataFromAPI(dto.getAdm_cd(), age));
-					if (jsonData.get("errMsg").asText().equals("Success")) {
-						JsonNode resultNode = jsonData.get("result");
-						if (resultNode.isArray() && resultNode.size() > 0) {
-							JsonNode populationNode = resultNode.get(0);
-							ObjectNode obj = (ObjectNode) populationNode;
-							obj.put("age", age);
-							updatePopulation(obj);
-						}
-					}
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-
-			}
-			updateSale(dto.getAdm_cd());
+		if (regionCheck().size() != 0) {
+			setVO();
 		}
-		
+		code = regionCheck();
+
+		insertRegion();
+		if (code.size() == 0) {
+			for (String code : code) {
+				for (RegionDataUpdateVO vo : vos) {
+					vo.setAdm_cd(code);
+					insertOtherData(vo);
+					for (int age : ageTypeList) {
+						try {
+							jsonData = parseJsonData(fetchDataFromAPI(code, age));
+							if (jsonData.get("errMsg").asText().equals("Success")) {
+								JsonNode resultNode = jsonData.get("result");
+								if (resultNode.isArray() && resultNode.size() > 0) {
+									JsonNode populationNode = resultNode.get(0);
+									ObjectNode obj = (ObjectNode) populationNode;
+									obj.put("age", age);
+									updatePopulation(obj);
+								}
+							}
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+
+					}
+					updateSale(code);
+				}
+			}
+		} else {
+			for (RegionDataUpdateVO vo : vos) {
+				insertOtherData(vo);
+			}
+			for (String code : code) {
+				for (int age : ageTypeList) {
+					try {
+						jsonData = parseJsonData(fetchDataFromAPI(code, age));
+						if (jsonData.get("errMsg").asText().equals("Success")) {
+							JsonNode resultNode = jsonData.get("result");
+							if (resultNode.isArray() && resultNode.size() > 0) {
+								JsonNode populationNode = resultNode.get(0);
+								ObjectNode obj = (ObjectNode) populationNode;
+								obj.put("age", age);
+								updatePopulation(obj);
+							}
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+
+				}
+				updateSale(code);
+			}
+		}
+
 	}
-	
+
+	@Override
+	public void addRegion() {
+		for (String code : code) {
+			regionDataUpdateRepository.addRegion(code);
+		}
+	}
+
 	@Override
 	public void updateSale(String adm_cd) {
 		Map<String, Object> map = new HashMap<>();

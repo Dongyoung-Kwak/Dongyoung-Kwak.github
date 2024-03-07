@@ -33,6 +33,8 @@ public interface IRegionDataUpdateService {
 	Map<String, Object> convertJsonNodeToMap(JsonNode jsonNode);
 
 	void updateSale(String adm_cd);
+	
+	void addRegion();
 
 	void setHousehold();
 
@@ -53,4 +55,6 @@ public interface IRegionDataUpdateService {
 	public void setFloatpp();
 
 	void updatePopulation(ObjectNode obj);
+
+	ArrayList<String> regionCheck();
 }

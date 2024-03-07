@@ -17,4 +17,6 @@ public interface IRegionDataUpdateRepository {
 	void updatePopulation(Map<String, Object> map);
 	void updateSale(Map<String, Object> map);
 	void insertRegionSale(String code);
+	ArrayList<String> regionCheck();
+	void addRegion(String adm_cd);
 }

@@ -58,5 +58,11 @@
 		<update id="updateSale" parameterType="map">
 			update region_sale set sale=#{sale} where adm_cd=#{adm_cd}
 		</update>
+		<select id="regionCheck" resultType="string">
+			select adm_cd from region where adm_cd not in (select adm_cd from region_population)
+		</select>
+		<insert id="addRegion" parameterType="string">
+			insert into region_population (adm_cd) values (#{adm_cd})
+		</insert>
 	</mapper>
 	

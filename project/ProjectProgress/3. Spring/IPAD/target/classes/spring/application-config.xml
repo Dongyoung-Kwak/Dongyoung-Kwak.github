@@ -5,28 +5,43 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:task="http://www.springframework.org/schema/task"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
 		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 
-	<context:property-placeholder location="classpath:database/jdbc.properties"/>
 	
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
-		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
-		<property name="username" value="scott"/>
-		<property name="password" value="tiger"/>
+	<context:property-placeholder
+		location="classpath:database/jdbc.properties" />
+
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName"
+			value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url"
+			value="jdbc:oracle:thin:@localhost:1521:xe" />
+		<property name="username" value="scott" />
+		<property name="password" value="tiger" />
 	</bean>
-	
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource"/>
-		<property name="mapperLocations" value="classpath:com/ipad/project/**/dao/*.xml"/>
-		
+
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations"
+			value="classpath:com/ipad/project/**/dao/*.xml" />
+
 	</bean>
-	
-	<context:component-scan base-package="com.ipad.project"/>
-	<mybatis-spring:scan base-package="com.ipad.project.*.dao"/>
-	
+<task:annotation-driven />
+	<context:component-scan
+		base-package="com.ipad.project">
+		<context:exclude-filter type="annotation"
+			expression="javax.annotation.PostConstruct" />
+	</context:component-scan>
+
+	<mybatis-spring:scan
+		base-package="com.ipad.project.*.dao" />
+
 </beans>

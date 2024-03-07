@@ -5,7 +5,10 @@ package com.ipad.project.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,10 +34,15 @@ public class LocationRecommandController{
 	
 		@Autowired
 		IRegionDataUpdateService regionDataUpdateService;
+		
+		@PostConstruct
+		@Scheduled(fixedDelay=60000L*60*24*90)
+		public void init() {
+			regionDataUpdateService.insertData();
+		}
 	
 		@GetMapping(value="/locationRecommand/recommand")
-		public String viewRecommand(Model model) {
-			regionDataUpdateService.insertData();
+		public String viewRecommand(Model model) {			
 			return "locationRecommand/recommand";
 			
 		}
