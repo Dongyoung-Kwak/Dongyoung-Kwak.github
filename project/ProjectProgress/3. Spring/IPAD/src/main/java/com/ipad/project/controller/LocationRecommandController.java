@@ -39,7 +39,6 @@ public class LocationRecommandController{
 		//지역 추천 페이지
 		@GetMapping(value="/locationRecommand/recommand")
 		public String viewRecommand(Model model) {		
-			System.out.println("지역추천");
 			return "locationRecommand/recommand";
 			
 		}
@@ -47,7 +46,6 @@ public class LocationRecommandController{
 		// 체크 여부에 따른 지역 추천
 		@PostMapping(value ="/json/locationRecommand")
 		public @ResponseBody List<RecommandVO>  getRegionList(@RequestBody Map<String, Boolean> data, Model model) {
-			System.out.println("버튼클릭");
 			boolean opt1 = data.get("checkOrth");
 			boolean opt2 = data.get("checkImpl");
 			List<RecommandVO> recommand = recommandService.recommandRegion(opt1, opt2);
