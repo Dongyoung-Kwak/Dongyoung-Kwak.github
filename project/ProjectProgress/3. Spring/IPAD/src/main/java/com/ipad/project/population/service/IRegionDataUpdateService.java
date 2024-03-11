@@ -18,8 +18,6 @@ public interface IRegionDataUpdateService {
 
 	void insertOtherData(RegionDataUpdateVO vo);
 
-	void insertPopulation(JsonNode record, int age, RegionDataUpdateVO vo);
-
 	String fetchDataFromAPI(String code, int age) throws IOException;
 
 	String fetchDataFromAPI() throws IOException;
@@ -29,8 +27,6 @@ public interface IRegionDataUpdateService {
 	String getToken();
 
 	JsonNode parseJsonData(String jsonData) throws IOException;
-
-	Map<String, Object> convertJsonNodeToMap(JsonNode jsonNode);
 
 	void updateSale(String adm_cd);
 	

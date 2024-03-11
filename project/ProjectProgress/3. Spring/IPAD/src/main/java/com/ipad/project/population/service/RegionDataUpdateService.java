@@ -72,12 +72,10 @@ public class RegionDataUpdateService implements IRegionDataUpdateService {
 			vos.add(vo);
 		}
 	}
-
 	@Override
 	public ArrayList<String> selectAdm() {
 		return regionDataUpdateRepository.selectAdm();
 	}
-
 	@Override
 	public void insertRegion() {
 		for (String code : code) {
@@ -85,17 +83,10 @@ public class RegionDataUpdateService implements IRegionDataUpdateService {
 			regionDataUpdateRepository.insertRegionSale(code);
 		}
 	}
-
 	@Override
 	public void insertOtherData(RegionDataUpdateVO vo) {
 		regionDataUpdateRepository.insertOtherData(vo);
 	}
-
-	@Override
-	public void insertPopulation(JsonNode record, int age, RegionDataUpdateVO vo) {
-		regionDataUpdateRepository.insertPopulation(record, age, vo);
-	}
-
 	@Override
 	public void updatePopulation(ObjectNode obj) {
 		Map<String, Object> map = new HashMap<>();
@@ -104,14 +95,6 @@ public class RegionDataUpdateService implements IRegionDataUpdateService {
 		map.put("adm_cd", obj.get("adm_cd").asText());
 		regionDataUpdateRepository.updatePopulation(map);
 	}
-
-	@Override
-	public Map<String, Object> convertJsonNodeToMap(JsonNode jsonNode) {
-		ObjectMapper objectMapper = new ObjectMapper();
-		return objectMapper.convertValue(jsonNode, new TypeReference<Map<String, Object>>() {
-		});
-	}
-
 	@Override
 	public String fetchDataFromAPI(String code, int age) throws IOException {
 		StringBuilder urlBuilder = new StringBuilder(url);
@@ -131,12 +114,10 @@ public class RegionDataUpdateService implements IRegionDataUpdateService {
 			return apiResponse.toString();
 		}
 	}
-
 	@Override
 	public ArrayList<String> regionCheck() {
 		return regionDataUpdateRepository.regionCheck();
 	}
-
 	@Override
 	public void insertData() {
 		JsonNode jsonData = null;
@@ -144,7 +125,6 @@ public class RegionDataUpdateService implements IRegionDataUpdateService {
 			setVO();
 		}
 		code = regionCheck();
-
 		insertRegion();
 		if (code.size() == 0) {
 			for (String code : code) {
@@ -166,7 +146,6 @@ public class RegionDataUpdateService implements IRegionDataUpdateService {
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
-
 					}
 					updateSale(code);
 				}
@@ -191,12 +170,10 @@ public class RegionDataUpdateService implements IRegionDataUpdateService {
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
-
 				}
 				updateSale(code);
 			}
 		}
-
 	}
 
 	@Override
@@ -205,7 +182,6 @@ public class RegionDataUpdateService implements IRegionDataUpdateService {
 			regionDataUpdateRepository.addRegion(code);
 		}
 	}
-
 	@Override
 	public void updateSale(String adm_cd) {
 		Map<String, Object> map = new HashMap<>();
@@ -213,49 +189,42 @@ public class RegionDataUpdateService implements IRegionDataUpdateService {
 		map.put("sale", getRegionDataService.calculateSale(adm_cd));
 		regionDataUpdateRepository.updateSale(map);
 	}
-
 	@Override
 	public void setHousehold() {
 		household.add(14453);
 		household.add(17258);
 		household.add(11322);
 	}
-
 	@Override
 	public void setHouseprice() {
 		houseprice.add(775064459);
 		houseprice.add(1465657143);
 		houseprice.add(1398833333);
 	}
-
 	@Override
 	public void setDentalClinic() {
 		dentalClinic.add(6);
 		dentalClinic.add(29);
 		dentalClinic.add(5);
 	}
-
 	@Override
 	public void setIncome() {
 		income.add(3920833);
 		income.add(3802500);
 		income.add(4405000);
 	}
-
 	@Override
 	public void setSubway() {
 		subway.add(0);
 		subway.add(1);
 		subway.add(0);
 	}
-
 	@Override
 	public void setBus() {
 		bus.add(32);
 		bus.add(49);
 		bus.add(13);
 	}
-
 	@Override
 	public void setResident() {
 		resident.add(44466);
@@ -263,14 +232,12 @@ public class RegionDataUpdateService implements IRegionDataUpdateService {
 		resident.add(43003);
 
 	}
-
 	@Override
 	public void setFloatpp() {
 		floatpp.add(3414090);
 		floatpp.add(2240641);
 		floatpp.add(664044);
 	}
-
 	@Override
 	public void setAgeType() {
 		ageTypeList.add(41);
@@ -279,9 +246,7 @@ public class RegionDataUpdateService implements IRegionDataUpdateService {
 				ageTypeList.add(i);
 			}
 		}
-
 	}
-
 	@Override
 	public String getToken() {
 		try {
@@ -294,11 +259,9 @@ public class RegionDataUpdateService implements IRegionDataUpdateService {
 		}
 		return token;
 	}
-
 	@Override
 	public String fetchDataFromAPI() throws IOException {
 		StringBuilder urlBuilder = new StringBuilder(urlToken);
-
 		try (BufferedReader reader = new BufferedReader(
 				new InputStreamReader(new URL(urlBuilder.toString()).openStream()))) {
 			StringBuilder apiResponse = new StringBuilder();
@@ -309,11 +272,9 @@ public class RegionDataUpdateService implements IRegionDataUpdateService {
 			return apiResponse.toString();
 		}
 	}
-
 	@Override
 	public JsonNode parseJsonData(String jsonData) throws IOException {
 		ObjectMapper objectMapper = new ObjectMapper();
 		return objectMapper.readTree(jsonData);
 	}
-
 }

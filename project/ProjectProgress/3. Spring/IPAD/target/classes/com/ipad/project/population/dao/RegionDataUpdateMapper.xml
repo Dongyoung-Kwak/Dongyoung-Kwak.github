@@ -8,9 +8,7 @@
 		<insert id="insertOtherData" parameterType="com.ipad.project.population.model.RegionDataUpdateVO">
 		insert into region_otherData (adm_cd, household, houseprice, dentalclinic, income, subway, bus, resident, floatpp) values (#{adm_cd},#{houseHold},#{housePrice},#{dentalClinic},#{income},#{subway},#{bus},#{resident},#{floatingPp})
 		</insert>
-		<insert id="insertPopulation" parameterType="com.ipad.project.population.model.RegionDataUpdateVO">
 		
-		</insert>
 		<insert id="insertRegion" parameterType="string">
 		
 			insert into region_population (adm_cd) values (#{code})

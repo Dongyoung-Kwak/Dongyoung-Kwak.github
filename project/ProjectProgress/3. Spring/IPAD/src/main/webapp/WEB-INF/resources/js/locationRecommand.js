@@ -1,6 +1,5 @@
 
 window.onload = function () {
-
 	fetchData();
 	$.getJSON(contextPath + "/json/emd.geojson", function (geojson) {
 		var data = geojson.features;

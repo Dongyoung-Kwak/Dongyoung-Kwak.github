@@ -1,11 +1,7 @@
 package com.ipad.project.controller;
 
-
-
 import java.util.List;
 import java.util.Map;
-
-import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -35,25 +31,30 @@ public class LocationRecommandController{
 		@Autowired
 		IRegionDataUpdateService regionDataUpdateService;
 		
-		@PostConstruct
+		//서버 시작 실행 후 90일마다 실행
 		@Scheduled(fixedDelay=60000L*60*24*90)
 		public void init() {
 			regionDataUpdateService.insertData();
 		}
-	
+		//지역 추천 페이지
 		@GetMapping(value="/locationRecommand/recommand")
-		public String viewRecommand(Model model) {			
+		public String viewRecommand(Model model) {		
+			System.out.println("지역추천");
 			return "locationRecommand/recommand";
 			
 		}
+		
+		// 체크 여부에 따른 지역 추천
 		@PostMapping(value ="/json/locationRecommand")
 		public @ResponseBody List<RecommandVO>  getRegionList(@RequestBody Map<String, Boolean> data, Model model) {
+			System.out.println("버튼클릭");
 			boolean opt1 = data.get("checkOrth");
 			boolean opt2 = data.get("checkImpl");
 			List<RecommandVO> recommand = recommandService.recommandRegion(opt1, opt2);
 			return recommand;
 		}
 		
+		// 지역 정보 송신
 		@PostMapping(value="/json/predict")
 		public @ResponseBody GetRegionDataVO predictData(@RequestBody Map<String, String> data,  Model model) {
 			String adm_nm = data.get("name");
@@ -61,6 +62,7 @@ public class LocationRecommandController{
 			return recommand;
 		}
 		
+		//지도 병워 정보
 		@GetMapping(value="/json/map")
 		public @ResponseBody List<HospitalDetailVO> mapData() {
 			List<HospitalDetailVO> hospital = getRegionDataService.getHospitalData();
