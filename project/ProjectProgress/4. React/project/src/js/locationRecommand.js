@@ -1,4 +1,4 @@
-import { map } from '../App'
+import { map } from '../component/main.jsx'
 const { kakao } = window
 window.onload = function () {
 	fetchData();
@@ -145,7 +145,6 @@ function getRankList() {
 
 			// 이제 writeRankList가 실행된 이후에 아래 코드가 실행됩니다.
 			var tempcon = document.getElementById('first').innerText;
-			console.log(map)
 			showMapData(tempcon);
 			fetcPredictData(tempcon);
 		})

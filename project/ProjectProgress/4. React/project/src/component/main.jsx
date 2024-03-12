@@ -1,48 +1,14 @@
 // eslint-disable-next-lin
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import React, { useEffect } from 'react';
-import { selectRegion, getRankList } from './js/locationRecommand.js';
-import $ from 'jquery';
-import './bootstrap/dist/css/bootstrap.css';
-import './css/index.css';
-import './css/recommand.css';
-import './js/locationRecommand.js'
+import Slider from 'react-slick'
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css'
+import '../css/index.css';
+import '../js/main.js'
+
 const { kakao } = window
 let map;
-
-
-{/*import './bootstrap/dist/js/bootstrap.bundle.js'*/ }
-{/*import logo from './logo.svg';*/ }
-
-{/*import { useState } from 'react'; */ }
-
-
-
-function LocationRecommandPage() {
-
-  return (
-    <div>
-      <Header />
-      <BelowHeader />
-      <LocationRecommand />
-      <KakaoMap />
-      <Footer />
-    </div>
-  );
-};
-function App() {
-  return (
-    <Router>
-      <div>
-        <Routes>
-          <Route exact path="/myapp" element={<Main />} />
-          <Route exact path="/myapp/locationRecommand/recommand" element={<LocationRecommandPage />} />
-        </Routes>
-      </div>
-    </Router>
-  );
-}
-
 function KakaoMap() {
   useEffect(() => {
     // Kakao 맵 API가 로드되었는지 확인 후 사용
@@ -66,7 +32,7 @@ function Main() {
   return (
     <div>
       <Header />
-      <MainCarousel />
+      <Slide />
       <AnalysisSection />
       <SaleAnalysisSection />
       <QnASection />
@@ -82,118 +48,7 @@ function BelowHeader() {
     </div>
   );
 }
-function LocationRecommand() {
 
-  return (
-    <div>
-      <div>
-        <div className="container">
-          <div style={{ height: '50px', width: '100px' }}></div>
-
-        </div>
-
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-3">
-              <div className="boxShadow vertical1">
-
-                <div className="section">
-                  <div className="subtitle">희망 분야</div>
-                  <div style={{ height: '20px', width: '100px' }}></div>
-                  <form action="submit.do" method="post">
-                    <table className="table">
-                      <tbody>
-                        <tr>
-                          <td>임플란트</td>
-                          <td><input type="checkbox" name="implant" value="implant"
-                            id="implant" /></td>
-                        </tr>
-                        <tr>
-                          <td>교정</td>
-                          <td><input type="checkbox" name="orthodontics"
-                            value="orthodontics" id="orthodontics" /></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <input id="searchBtn" type="button" value="추천 지역 검색"
-                      onClick={getRankList} />
-                  </form>
-                </div>
-              </div>
-              <div className="boxShadow vertical2">
-                <div style={{ height: '20px', width: '100px' }}></div>
-                <div className="section">
-                  <div className="subtitle">추천 지역</div>
-                  <div style={{ height: '20px', width: '100px' }}></div>
-                  <table id="areaTable" className="table">
-                    <tbody>
-                      <tr>
-                        <td>1.</td>
-                        <td id="first" onClick={(event) => selectRegion(event)}>-</td>
-                        <td></td>
-                      </tr>
-                      <tr>
-                        <td>2.</td>
-                        <td id="second" onClick={(event) => selectRegion(event)}>-</td>
-                        <td></td>
-                      </tr>
-                      <tr>
-                        <td>3.</td>
-                        <td id="third" onClick={(event) => selectRegion(event)}>-</td>
-                        <td></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <div style={{ height: '50px', width: '100px' }}></div>
-                  <div className="subtitle" id="regionDetail">지역 정보</div>
-                  <div style={{ height: '20px', width: '100px' }}></div>
-                  <table id="forecastTable" className="table">
-                    <tbody>
-                      <tr>
-                        <td>예상 환자 수(월)</td>
-                        <td id="patient">-</td>
-
-                      </tr>
-                      <tr>
-                        <td>추천 간호사수</td>
-                        <td id="employee">-</td>
-                      </tr>
-                      <tr>
-                        <td>추천 평수</td>
-                        <td id="size">-</td>
-                      </tr>
-                      <tr>
-                        <td>예상 순수익</td>
-                        <td id="predictSale">-</td>
-                      </tr>
-
-                    </tbody>
-                  </table>
-                </div>
-
-              </div>
-            </div>
-            <div className="col-lg-9">
-              <div>
-                <div id="map" className="boxShadow" style={{ width: '100%' }}></div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-        <div className="container">
-          <div id="explain" className="boxShadow">
-            ※ 회귀분석으로 치과의원의 예상 매출과 환자 수를 구하는 회귀식을 구해 지역별 예상 매출, 환자 수 정보를 제공합니다.<br />
-            ※ 지역별 예상 매출과 연령대 인구수에 기반하여 사용자의 선택에 따른 점수를 부여하고, 이를 종합하여 높은 점수를 가진 지역을 추천합니다.<br />
-            ※ 예상 환자 수에 따라 의료법 의료기관 의료인 정원 기준을 만족하는 간호사 수를 추천합니다.<br />
-            ※ 서울시의 평균 환자 수와 병원 평수를 기준으로 예상 환자에 따른 병원 평수를 추천합니다.<br />
-            ※ 추천 직원수와 추천 평수의 임대료로 예상 순수익 계산합니다.<br />
-          </div>
-        </div>
-      </div>
-    </div >
-  );
-}
 function Header() {
   let loggedInUser = '홍길동';
   {/*let [a, b] = useState('DATA');*/ }
@@ -201,8 +56,8 @@ function Header() {
     <div>
       <nav className="navbar fixed-top navbar-expand-lg">
         <div className="container">
-          
-          <a className="navbar-brand fs-4" href="/myapp"><img src={require("./img/logo.png")} alt="" /></a>
+
+          <Link className="navbar-brand fs-4" to="/myapp"><img src={require("../img/logo.png")} alt="" /></Link>
 
           <button className="navbar-toggler shadow-none border-0 " type="button"
             data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
@@ -214,37 +69,52 @@ function Header() {
             id="offcanvasNavbar">
 
             <div className="offcanvas-header border-bottom">
-              <h5 className="offcanvas-title" id="offcanvasNavbarLabel"><img src={require("./img/logo.png")} alt="" /></h5>
+              <h5 className="offcanvas-title" id="offcanvasNavbarLabel"><img src={require("../img/logo.png")} alt="" /></h5>
               <button type="button" className="btn-close shadow-none"
                 data-bs-dismiss="offcanvas"></button>
             </div>
 
             <div className="offcanvas-body d-flex flex-column flex-lg-row p-4 p-lg-0">
               <ul className="navbar-nav justify-content-center fs-5 flex-grow-1 pe-3">
-                <li className="nav-item mx-5"><a className="nav-link"
-                  href="/myapp/locationRecommand/recommand">지역추천</a></li>
-                <li className="nav-item mx-5"><a className="nav-link"
-                  href="/saleAnalysis/search.do">매출분석</a></li>
+                <li className="nav-item mx-5"><Link className="nav-link"
+                  to="/myapp/locationRecommand/recommand">지역추천</Link></li>
+                <li className="nav-item mx-5"><Link className="nav-link"
+                  to="/saleAnalysis/search.do">매출분석</Link></li>
                 <li className="nav-item dropdown mx-5">
                   <div className="dropdown-center">
-                    <a className="nav-link dropdown-toggle" href="#" role="button"
-                      data-bs-toggle="dropdown">입지분석</a>
+                    <Link className="nav-link dropdown-toggle" to="#" role="button"
+                      data-bs-toggle="dropdown">입지분석</Link>
                     <ul className="dropdown-menu">
-                      <li><a className="dropdown-item"
-                        href="/locationAnalysis/population.do">인구분석</a></li>
-                      <li><a className="dropdown-item"
-                        href="/locationAnalysis/hospital.do">치과현황</a></li>
-                      <li><a className="dropdown-item"
-                        href="/locationAnalysis/map.do">지도</a></li>
+                      <li><Link className="dropdown-item"
+                        to="/locationAnalysis/population.do">인구분석</Link></li>
+                      <li><Link className="dropdown-item"
+                        to="/locationAnalysis/hospital.do">치과현황</Link></li>
+                      <li><Link className="dropdown-item"
+                        to="/locationAnalysis/map.do">지도</Link></li>
                     </ul>
                   </div>
                 </li>
-                <li className="nav-item mx-5"><a className="nav-link" href="/board/boardList.do">Q&A</a>
+                <li className="nav-item mx-5"><Link className="nav-link" to="/board/boardList.do">Q&A</Link>
                 </li>
               </ul>
 
               {/*<c:set var="loggedInUser" value="${sessionScope.loggedInUser}" />*/}
               {loggedInUser === null ?
+                <div
+                  className="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
+                  <A className='text-dark' link='/member/loginPage.do' text='로그인'></A>
+                  <A className='text-white text-decoration-none px-3 py-1 rounded-4' link='/member/assent.do' text='회원가입' id='loginBtn'></A>
+                </div>
+                :
+                <div>
+                  <div className="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
+                    <p id="useName"> {loggedInUser} 님 안녕하세요</p>
+                    <A className='text-dark' link='/member/logout.do' text='로그아웃'></A>
+                    <A className='text-white text-decoration-none px-3 py-1 rounded-4' link='/member/mypage.do' text='마이페이지' id='loginBtn'></A>
+                  </div>
+                </div>}
+
+              {/* {loggedInUser === null ?
                 <div
                   className="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
                   <a className="text-dark"
@@ -265,7 +135,7 @@ function Header() {
                       className="text-white text-decoration-none px-3 py-1 rounded-4"
                       href="/member/mypage.do">마이페이지</a>
                   </div>
-                </div>}
+                </div>} */}
 
               {/* 
               <c:choose>
@@ -326,7 +196,32 @@ function Footer() {
     </div>
   );
 }
+function Slide() {
+  const settings = {
+    cssEase: 'linear',
+    infinite: true,
+    slidesToScroll: 1,
+    autoplay: true,
+    fade: true,
+    autoplaySpeed: 100,
+  }
+  return (
+    <div>
+      <Slider {...settings}>
+        <div>
+          <img src={require('../img/carousel1.jpg')} alt="" style={{ width: '100%', height: '100%' }} />
+        </div>
+        <div>
+          <img src={require('../img/carousel2.jpg')} alt="" style={{ width: '100%', height: '100%' }} />
+        </div>
+        <div>
+          <img src={require('../img/carousel3.jpg')} alt="" style={{ width: '100%', height: '100%' }} />
+        </div>
+      </Slider>
+    </div>
 
+  );
+}
 function MainCarousel() {
   return (
     <div>
@@ -351,7 +246,7 @@ function MainCarousel() {
         {/*<!-- carousel page1  -->*/}
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <img src={require('./img/carousel1.jpg')} alt="" />
+            <img src={require('../img/carousel1.jpg')} alt="" />
 
             <div className="container">
               <div className="carousel-caption text-start">
@@ -374,7 +269,7 @@ function MainCarousel() {
 
           {/*<!-- carousel page2 -->*/}
           <div className="carousel-item">
-            <img src={require('./img/carousel2.jpg')} alt="" />
+            <img src={require('../img/carousel2.jpg')} alt="" />
             <div className="container">
               <div className="carousel-caption text-start">
                 <div id="title">주거 인구 예측 서비스</div>
@@ -387,7 +282,7 @@ function MainCarousel() {
 
           {/*<!-- carousel page3 -->*/}
           <div className="carousel-item">
-            <img src={require('./img/carousel3.jpg')} alt="" />
+            <img src={require('../img/carousel3.jpg')} alt="" />
             <div className="container">
               <div className="carousel-caption text-start">
                 <div id="title">매출 예측 서비스</div>
@@ -424,24 +319,24 @@ function AnalysisSection() {
         <div className="container">
           <div className="row">
             <div id="analysisLeft" className="col-lg-6 ">
-              <img src={require('./img/mainFirstContent1.png')} alt="" />
+              <img src={require('../img/mainFirstContent1.png')} alt="" />
             </div>
             <div id="analysisRight" className="col-lg-6 ">
               <div>
                 <h2>인구 분석</h2>
-                <img src={require('./img/mainFirstContent2.jpg')} alt="" />
+                <img src={require('../img/mainFirstContent2.jpg')} alt="" />
                 <h6>
                   신도시 유동인구와 거주인구를 파악하여 어느입지에 치과를 설립해야 유리할까?
                 </h6>
-                <a href="populationStatus.html" className="btn">자세히 보기</a>
+                <Link to="populationStatus.html" className="btn">자세히 보기</Link>
               </div>
               <div>
                 <h2>치과 현황</h2>
-                <img src={require('./img/mainFirstContent2.jpg')} alt="" />
+                <img src={require('../img/mainFirstContent2.jpg')} alt="" />
                 <h6>
                   주변의 치과의원 수와  개업 · 폐업의 수를 파악하여 개업이 가능할까?
                 </h6>
-                <a href="hospitalStatus.html" className="btn">자세히 보기</a>
+                <Link to="hospitalStatus.html" className="btn">자세히 보기</Link>
               </div>
             </div>
           </div>
@@ -458,7 +353,7 @@ function SaleAnalysisSection() {
           <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <h1 id="analysisTitle">성공적인 개업을 위한 매출 분석</h1>
             <h6>
-              정확한 분석을 원하시면 <a href="search.html">여기</a>를 클릭해주세요
+              정확한 분석을 원하시면 <a to="search.html">여기</a>를 클릭해주세요
             </h6>
           </div>
         </div>
@@ -466,23 +361,23 @@ function SaleAnalysisSection() {
         <div id="content2Bottom" className="container">
           <div className="row">
             <div id="content2Left" className="col-lg-6">
-              <img src={require('./img/mainSecondContent1.png')} alt="" />
+              <img src={require('../img/mainSecondContent1.png')} alt="" />
             </div>
             <div id="content2Right" className="col-lg-6">
               <div>
                 <div>
-                  <img src={require('./img/mainSecondContent2.png')} alt="" />
+                  <img src={require('../img/mainSecondContent2.png')} alt="" />
                 </div>
                 <div>
-                  <img src={require('./img/mainSecondContent3.png')} alt="" />
+                  <img src={require('../img/mainSecondContent3.png')} alt="" />
                 </div>
               </div>
               <div>
                 <div>
-                  <img src={require('./img/mainSecondContent4.png')} alt="" />
+                  <img src={require('../img/mainSecondContent4.png')} alt="" />
                 </div>
                 <div>
-                  <img src={require('./img/mainSecondContent5.png')} alt="" />
+                  <img src={require('../img/mainSecondContent5.png')} alt="" />
                 </div>
               </div>
             </div>
@@ -500,13 +395,13 @@ function QnASection() {
 
         {/*<!-- 본문3 왼쪽 -->*/}
         <div id="boardLeft" className="col-lg-6">
-          <img src={require('./img/mainThirdContent.jpg')} alt="" />
+          <img src={require('../img/mainThirdContent.jpg')} alt="" />
         </div>
 
         {/*<!-- 본문3 오른쪽(게시판)------------------------------------------------------------------------------------------->*/}
         <div id="boardRight" className="col-lg-6 ">
           <div id="title">
-            <a href="">Q&A</a>
+            <Link to="">Q&A</Link>
           </div>
           <table className="table">
 
@@ -515,42 +410,42 @@ function QnASection() {
             <tbody>
               <tr>
                 <th>1</th>
-                <td><a href="">게시글 1</a></td>
+                <td><Link to="">게시글 1</Link></td>
                 <td>2022-02-22</td>
               </tr>
               <tr>
                 <th>2</th>
-                <td><a href="">게시글 2</a></td>
+                <td><Link to="">게시글 2</Link></td>
                 <td>2022-02-22</td>
               </tr>
               <tr>
                 <th>3</th>
-                <td><a href="">게시글 3</a></td>
+                <td><Link to="">게시글 3</Link></td>
                 <td>2022-02-22</td>
               </tr>
               <tr>
                 <th>4</th>
-                <td><a href="">게시글 4</a></td>
+                <td><Link to="">게시글 4</Link></td>
                 <td>2022-02-22</td>
               </tr>
               <tr>
                 <th>5</th>
-                <td><a href="">게시글 5</a></td>
+                <td><Link to="">게시글 5</Link></td>
                 <td>2022-02-22</td>
               </tr>
               <tr>
                 <th>6</th>
-                <td><a href="">게시글 6</a></td>
+                <td><Link to="">게시글 6</Link></td>
                 <td>2022-02-22</td>
               </tr>
               <tr>
                 <th>7</th>
-                <td><a href="">게시글 7</a></td>
+                <td><Link to="">게시글 7</Link></td>
                 <td>2022-02-22</td>
               </tr>
               <tr>
                 <th>8</th>
-                <td><a href="">게시글 8</a></td>
+                <td><Link to="">게시글 8</Link></td>
                 <td>2022-02-22</td>
               </tr>
             </tbody>
@@ -562,5 +457,11 @@ function QnASection() {
   );
 }
 
-export default App;
-export { map };
+function A(props) {
+  return (
+    <Link id={props.id} className={props.className} to={props.link}>{props.text}</Link>
+  );
+}
+
+// export default;
+export { Main, Header, Footer, BelowHeader, KakaoMap, map };
