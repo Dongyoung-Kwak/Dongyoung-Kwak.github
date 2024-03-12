@@ -1,9 +1,6 @@
 // eslint-disable-next-lin
 import { Link } from 'react-router-dom';
 import React, { useEffect } from 'react';
-import Slider from 'react-slick'
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css'
 import '../css/index.css';
 import '../js/main.js'
 
@@ -32,7 +29,7 @@ function Main() {
   return (
     <div>
       <Header />
-      <Slide />
+      <MainCarousel />
       <AnalysisSection />
       <SaleAnalysisSection />
       <QnASection />
@@ -51,7 +48,6 @@ function BelowHeader() {
 
 function Header() {
   let loggedInUser = '홍길동';
-  {/*let [a, b] = useState('DATA');*/ }
   return (
     <div>
       <nav className="navbar fixed-top navbar-expand-lg">
@@ -98,7 +94,6 @@ function Header() {
                 </li>
               </ul>
 
-              {/*<c:set var="loggedInUser" value="${sessionScope.loggedInUser}" />*/}
               {loggedInUser === null ?
                 <div
                   className="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
@@ -113,59 +108,6 @@ function Header() {
                     <A className='text-white text-decoration-none px-3 py-1 rounded-4' link='/member/mypage.do' text='마이페이지' id='loginBtn'></A>
                   </div>
                 </div>}
-
-              {/* {loggedInUser === null ?
-                <div
-                  className="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
-                  <a className="text-dark"
-                    href="/member/loginPage.do">로그인</a>
-                  <a id="loginBtn"
-                    className="text-white text-decoration-none px-3 py-1 rounded-4"
-                    href="/member/assent.do">회원가입</a>
-                </div>
-                :
-                <div>
-
-                  <div
-                    className="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
-                    <p id="useName"> {loggedInUser} 님 안녕하세요</p>
-                    <a className="text-dark"
-                      href="/member/logout.do">로그아웃</a>
-                    <a id="loginBtn"
-                      className="text-white text-decoration-none px-3 py-1 rounded-4"
-                      href="/member/mypage.do">마이페이지</a>
-                  </div>
-                </div>} */}
-
-              {/* 
-              <c:choose>
-                <c:when test="${empty loggedInUser}">
-                  <div
-                    className="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
-                    <a className="text-dark"
-                      href="${pageContext.request.contextPath}/member/loginPage.do">로그인</a>
-                    <a id="loginBtn"
-                      className="text-white text-decoration-none px-3 py-1 rounded-4"
-                      href="${pageContext.request.contextPath}/member/assent.do">회원가입</a>
-                  </div>
-
-                </c:when>
-                <c:otherwise>
-
-                  <p id="useName">${loggedInUser.name} 님 안녕하세요</p>
-                  <div
-                    className="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
-                    <a className="text-dark"
-                      href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a>
-                    <a id="loginBtn"
-                      className="text-white text-decoration-none px-3 py-1 rounded-4"
-                      href="${pageContext.request.contextPath}/member/mypage.do">마이페이지</a>
-                  </div>
-
-
-                </c:otherwise>
-              </c:choose>
-*/}
             </div>
           </div>
         </div>
@@ -196,32 +138,7 @@ function Footer() {
     </div>
   );
 }
-function Slide() {
-  const settings = {
-    cssEase: 'linear',
-    infinite: true,
-    slidesToScroll: 1,
-    autoplay: true,
-    fade: true,
-    autoplaySpeed: 100,
-  }
-  return (
-    <div>
-      <Slider {...settings}>
-        <div>
-          <img src={require('../img/carousel1.jpg')} alt="" style={{ width: '100%', height: '100%' }} />
-        </div>
-        <div>
-          <img src={require('../img/carousel2.jpg')} alt="" style={{ width: '100%', height: '100%' }} />
-        </div>
-        <div>
-          <img src={require('../img/carousel3.jpg')} alt="" style={{ width: '100%', height: '100%' }} />
-        </div>
-      </Slider>
-    </div>
 
-  );
-}
 function MainCarousel() {
   return (
     <div>
@@ -229,70 +146,16 @@ function MainCarousel() {
         data-bs-ride="carousel" data-bs-interval="4000">
         {/* 하단 현재위치  */}
         <div className="carousel-indicators">
-          <button type="button" data-bs-target="#mainCarousel"
-            data-bs-slide-to="0" className="active">
-            <span></span>
-          </button>
-          <button type="button" data-bs-target="#mainCarousel"
-            data-bs-slide-to="1">
-            <span></span>
-          </button>
-          <button type="button" data-bs-target="#mainCarousel"
-            data-bs-slide-to="2">
-            <span></span>
-          </button>
+          <CarouselBtn number='0' className='active' />
+          <CarouselBtn number='1' />
+          <CarouselBtn number='2' />
         </div>
-
-        {/*<!-- carousel page1  -->*/}
         <div className="carousel-inner">
-          <div className="carousel-item active">
-            <img src={require('../img/carousel1.jpg')} alt="" />
-
-            <div className="container">
-              <div className="carousel-caption text-start">
-                <div id="title"></div>
-                <div id="detail" className="col-xs-12 col-sm-12 col-lg-6">
-                  치과 개원을 준비하는 의사를 위한 입지 분석<br>
-                    {/*<!-- 유동인구, 치과 현황을 통한 입지분석 -->*/}</br>
-                </div>
-                {/*
-                  <!-- <button type="button">
-                    <div className="temp">
-                      <a href="">자세히 알아보기</a>
-                    </div>
-  </button> -->*/}
-
-
-              </div>
-            </div>
-          </div>
-
-          {/*<!-- carousel page2 -->*/}
-          <div className="carousel-item">
-            <img src={require('../img/carousel2.jpg')} alt="" />
-            <div className="container">
-              <div className="carousel-caption text-start">
-                <div id="title">주거 인구 예측 서비스</div>
-                <div id="detail" className="col-xs-12 col-sm-12 col-lg-6">주택 ·
-                  인구 데이터 분석을 통해 주거 인구 예측</div>
-                {/*<!-- <button type="button"><a href="">자세히 알아보기</a></button> -->*/}
-              </div>
-            </div>
-          </div>
-
-          {/*<!-- carousel page3 -->*/}
-          <div className="carousel-item">
-            <img src={require('../img/carousel3.jpg')} alt="" />
-            <div className="container">
-              <div className="carousel-caption text-start">
-                <div id="title">매출 예측 서비스</div>
-                <div id="detail" className="col-xs-12 col-sm-12 col-lg-6">빅데이터
-                  분석을 통한 매출 분석 서비스</div>
-                {/* <!-- <button type="button"><a href="">자세히 알아보기</a></button> -->*/}
-              </div>
-            </div>
-          </div>
-
+          <CarouselItem firClassName='carousel-item active' src='../img/carousel1.jpg' secClassName='container' thirdClassName='carousel-caption text-start' firId='title' secId='detail' text='치과 개원을 준비하는 의사를 위한 입지 분석' />
+          <CarouselItem firClassName='carousel-item ' src='../img/carousel2.jpg' title='주거 인구 예측 서비스' secClassName='container' thirdClassName='carousel-caption text-start' firId='title' secId='detail' text='주택 ·
+                  인구 데이터 분석을 통해 주거 인구 예측'/>
+          <CarouselItem firClassName='carousel-item ' src='../img/carousel3.jpg' title='매출 예측 서비스' secClassName='container' thirdClassName='carousel-caption text-start' firId='title' secId='detail' text='빅데이터
+                  분석을 통한 매출 분석 서비스'/>
           {/*<!-- carousel 좌우 버튼 -->*/}
           <button className="carousel-control-prev" type="button"
             data-bs-target="#myCarousel" data-bs-slide="prev"></button>
@@ -404,50 +267,17 @@ function QnASection() {
             <Link to="">Q&A</Link>
           </div>
           <table className="table">
-
             <thead>
             </thead>
             <tbody>
-              <tr>
-                <th>1</th>
-                <td><Link to="">게시글 1</Link></td>
-                <td>2022-02-22</td>
-              </tr>
-              <tr>
-                <th>2</th>
-                <td><Link to="">게시글 2</Link></td>
-                <td>2022-02-22</td>
-              </tr>
-              <tr>
-                <th>3</th>
-                <td><Link to="">게시글 3</Link></td>
-                <td>2022-02-22</td>
-              </tr>
-              <tr>
-                <th>4</th>
-                <td><Link to="">게시글 4</Link></td>
-                <td>2022-02-22</td>
-              </tr>
-              <tr>
-                <th>5</th>
-                <td><Link to="">게시글 5</Link></td>
-                <td>2022-02-22</td>
-              </tr>
-              <tr>
-                <th>6</th>
-                <td><Link to="">게시글 6</Link></td>
-                <td>2022-02-22</td>
-              </tr>
-              <tr>
-                <th>7</th>
-                <td><Link to="">게시글 7</Link></td>
-                <td>2022-02-22</td>
-              </tr>
-              <tr>
-                <th>8</th>
-                <td><Link to="">게시글 8</Link></td>
-                <td>2022-02-22</td>
-              </tr>
+              <Board number='8' link='' text='게시글 8' date='2022-03-10' />
+              <Board number='7' link='' text='게시글 7' date='2022-03-01' />
+              <Board number='6' link='' text='게시글 6' date='2022-02-20' />
+              <Board number='5' link='' text='게시글 5' date='2022-02-18' />
+              <Board number='4' link='' text='게시글 4' date='2022-02-17' />
+              <Board number='3' link='' text='게시글 3' date='2022-02-16' />
+              <Board number='2' link='' text='게시글 2' date='2022-02-06' />
+              <Board number='1' link='' text='게시글 1' date='2022-02-06' />
             </tbody>
           </table>
         </div>
@@ -456,7 +286,36 @@ function QnASection() {
 
   );
 }
+function CarouselBtn(props) {
+  return (
+    <button type='button' data-bs-target='#mainCarousel' data-bs-slide-to={props.number} className={props.className}>
+      <span></span>
+    </button>
+  );
+}
+function CarouselItem(props) {
+  return (
+    <div className={props.firClassName}>
+      <img src={props.src} />
+      <div className={props.secClassName}>
+        <div className={props.thirdClassName}>
+          <div id={props.firId}>{props.title}</div>
+          <div id={props.secId} className="col-xs-12 col-sm-12 col-lg-6">{props.text}</div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
+function Board(props) {
+  return (
+    <tr>
+      <th>{props.number}</th>
+      <td><Link to={props.link}>{props.text}</Link></td>
+      <td>{props.date}</td>
+    </tr>
+  );
+}
 function A(props) {
   return (
     <Link id={props.id} className={props.className} to={props.link}>{props.text}</Link>
