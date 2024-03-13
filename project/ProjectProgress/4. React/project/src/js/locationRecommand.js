@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import { map } from '../component/main.jsx'
 const { kakao } = window
 window.onload = function () {
@@ -266,7 +267,6 @@ function hanamHosLoc() {
 
 var array = [];
 function fetchData() {
-	console.log(process.env.PUBLIC_URL)
 	fetch(process.env.PUBLIC_URL + '/json/map')
 		.then(response => {
 			if (!response.ok) {

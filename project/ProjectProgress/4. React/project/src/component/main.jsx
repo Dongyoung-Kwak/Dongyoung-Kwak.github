@@ -1,4 +1,4 @@
-// eslint-disable-next-lin
+// eslint-disable-next-line
 import { Link } from 'react-router-dom';
 import React, { useEffect } from 'react';
 import '../css/index.css';
@@ -6,6 +6,9 @@ import '../js/main.js'
 
 const { kakao } = window
 let map;
+const today = new Date();
+const board = [1, 2, 3, 4, 5, 6, 7, 8];
+
 function KakaoMap() {
   useEffect(() => {
     // Kakao 맵 API가 로드되었는지 확인 후 사용
@@ -47,29 +50,23 @@ function BelowHeader() {
 }
 
 function Header() {
-  let loggedInUser = '홍길동';
+  let loggedInUser = null;
   return (
     <div>
       <nav className="navbar fixed-top navbar-expand-lg">
         <div className="container">
-
-          <Link className="navbar-brand fs-4" to="/myapp"><img src={require("../img/logo.png")} alt="" /></Link>
-
+          <Link className="navbar-brand fs-4" to="/myapp"><Img src={require("../img/logo.png")} /></Link>
           <button className="navbar-toggler shadow-none border-0 " type="button"
             data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
             <span className="navbar-toggler-icon"></span>
           </button>
-
-
           <div className="offcanvas offcanvas-start sidebar" tabIndex="-1"
             id="offcanvasNavbar">
-
             <div className="offcanvas-header border-bottom">
-              <h5 className="offcanvas-title" id="offcanvasNavbarLabel"><img src={require("../img/logo.png")} alt="" /></h5>
+              <h5 className="offcanvas-title" id="offcanvasNavbarLabel"><Img src={require("../img/logo.png")} /></h5>
               <button type="button" className="btn-close shadow-none"
                 data-bs-dismiss="offcanvas"></button>
             </div>
-
             <div className="offcanvas-body d-flex flex-column flex-lg-row p-4 p-lg-0">
               <ul className="navbar-nav justify-content-center fs-5 flex-grow-1 pe-3">
                 <li className="nav-item mx-5"><Link className="nav-link"
@@ -93,7 +90,6 @@ function Header() {
                 <li className="nav-item mx-5"><Link className="nav-link" to="/board/boardList.do">Q&A</Link>
                 </li>
               </ul>
-
               {loggedInUser === null ?
                 <div
                   className="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
@@ -113,7 +109,6 @@ function Header() {
         </div>
       </nav>
     </div>
-
   )
 }
 function Footer() {
@@ -144,17 +139,16 @@ function MainCarousel() {
     <div>
       <div id="mainCarousel" className="carousel slide mb-6"
         data-bs-ride="carousel" data-bs-interval="4000">
-        {/* 하단 현재위치  */}
         <div className="carousel-indicators">
           <CarouselBtn number='0' className='active' />
           <CarouselBtn number='1' />
           <CarouselBtn number='2' />
         </div>
         <div className="carousel-inner">
-          <CarouselItem firClassName='carousel-item active' src='../img/carousel1.jpg' secClassName='container' thirdClassName='carousel-caption text-start' firId='title' secId='detail' text='치과 개원을 준비하는 의사를 위한 입지 분석' />
-          <CarouselItem firClassName='carousel-item ' src='../img/carousel2.jpg' title='주거 인구 예측 서비스' secClassName='container' thirdClassName='carousel-caption text-start' firId='title' secId='detail' text='주택 ·
+          <CarouselItem firClassName='carousel-item active' src={require('../img/carousel1.jpg')} secClassName='container' thirdClassName='carousel-caption text-start' firId='title' secId='detail' text='치과 개원을 준비하는 의사를 위한 입지 분석' />
+          <CarouselItem firClassName='carousel-item ' src={require('../img/carousel2.jpg')} title='주거 인구 예측 서비스' secClassName='container' thirdClassName='carousel-caption text-start' firId='title' secId='detail' text='주택 ·
                   인구 데이터 분석을 통해 주거 인구 예측'/>
-          <CarouselItem firClassName='carousel-item ' src='../img/carousel3.jpg' title='매출 예측 서비스' secClassName='container' thirdClassName='carousel-caption text-start' firId='title' secId='detail' text='빅데이터
+          <CarouselItem firClassName='carousel-item ' src={require('../img/carousel3.jpg')} title='매출 예측 서비스' secClassName='container' thirdClassName='carousel-caption text-start' firId='title' secId='detail' text='빅데이터
                   분석을 통한 매출 분석 서비스'/>
           {/*<!-- carousel 좌우 버튼 -->*/}
           <button className="carousel-control-prev" type="button"
@@ -178,28 +172,27 @@ function AnalysisSection() {
             </h1>
           </div>
         </div>
-
         <div className="container">
           <div className="row">
             <div id="analysisLeft" className="col-lg-6 ">
-              <img src={require('../img/mainFirstContent1.png')} alt="" />
+              <Img src={require('../img/mainFirstContent1.png')} />
             </div>
             <div id="analysisRight" className="col-lg-6 ">
               <div>
                 <h2>인구 분석</h2>
-                <img src={require('../img/mainFirstContent2.jpg')} alt="" />
+                <Img src={require('../img/mainFirstContent2.jpg')} />
                 <h6>
                   신도시 유동인구와 거주인구를 파악하여 어느입지에 치과를 설립해야 유리할까?
                 </h6>
-                <Link to="populationStatus.html" className="btn">자세히 보기</Link>
+                <A to="populationStatus.html" className="btn" text='자세히 보기' />
               </div>
               <div>
                 <h2>치과 현황</h2>
-                <img src={require('../img/mainFirstContent2.jpg')} alt="" />
+                <Img src={require('../img/mainFirstContent2.jpg')} />
                 <h6>
                   주변의 치과의원 수와  개업 · 폐업의 수를 파악하여 개업이 가능할까?
                 </h6>
-                <Link to="hospitalStatus.html" className="btn">자세히 보기</Link>
+                <A to="hospitalStatus.html" className="btn" text='자세히 보기' />
               </div>
             </div>
           </div>
@@ -228,20 +221,12 @@ function SaleAnalysisSection() {
             </div>
             <div id="content2Right" className="col-lg-6">
               <div>
-                <div>
-                  <img src={require('../img/mainSecondContent2.png')} alt="" />
-                </div>
-                <div>
-                  <img src={require('../img/mainSecondContent3.png')} alt="" />
-                </div>
+                <Img src={require('../img/mainSecondContent2.png')} />
+                <Img src={require('../img/mainSecondContent3.png')} />
               </div>
               <div>
-                <div>
-                  <img src={require('../img/mainSecondContent4.png')} alt="" />
-                </div>
-                <div>
-                  <img src={require('../img/mainSecondContent5.png')} alt="" />
-                </div>
+                <Img src={require('../img/mainSecondContent4.png')} />
+                <Img src={require('../img/mainSecondContent5.png')} />
               </div>
             </div>
           </div>
@@ -255,29 +240,23 @@ function QnASection() {
   return (
     <div className="container">
       <div className="row">
-
         {/*<!-- 본문3 왼쪽 -->*/}
         <div id="boardLeft" className="col-lg-6">
-          <img src={require('../img/mainThirdContent.jpg')} alt="" />
+          <Img src={require('../img/mainThirdContent.jpg')} />
         </div>
-
         {/*<!-- 본문3 오른쪽(게시판)------------------------------------------------------------------------------------------->*/}
         <div id="boardRight" className="col-lg-6 ">
           <div id="title">
-            <Link to="">Q&A</Link>
+            <A to="" text='Q&A' />
           </div>
           <table className="table">
             <thead>
             </thead>
             <tbody>
-              <Board number='8' link='' text='게시글 8' date='2022-03-10' />
-              <Board number='7' link='' text='게시글 7' date='2022-03-01' />
-              <Board number='6' link='' text='게시글 6' date='2022-02-20' />
-              <Board number='5' link='' text='게시글 5' date='2022-02-18' />
-              <Board number='4' link='' text='게시글 4' date='2022-02-17' />
-              <Board number='3' link='' text='게시글 3' date='2022-02-16' />
-              <Board number='2' link='' text='게시글 2' date='2022-02-06' />
-              <Board number='1' link='' text='게시글 1' date='2022-02-06' />
+              {board.map((boardNumber) => (
+                <Board number={boardNumber} text={`게시글 ${boardNumber}`} date={today.getFullYear() +
+                  '-' + padNumber(today.getMonth() + 1) + '-' + padNumber(today.getDate())} />
+              ))}
             </tbody>
           </table>
         </div>
@@ -285,6 +264,11 @@ function QnASection() {
     </div>
 
   );
+}
+
+
+function padNumber(number) {
+  return number < 10 ? '0' + number : number;
 }
 function CarouselBtn(props) {
   return (
@@ -321,6 +305,12 @@ function A(props) {
     <Link id={props.id} className={props.className} to={props.link}>{props.text}</Link>
   );
 }
+function Img(props) {
+  return (
+    <div>
+      <img src={props.src} alt=''></img>
+    </div>
+  );
+}
 
-// export default;
 export { Main, Header, Footer, BelowHeader, KakaoMap, map };
