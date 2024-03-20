@@ -26,7 +26,7 @@
 ### <img src="https://github.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/blob/master/Emojis/Travel%20and%20places/Hospital.png" alt="profile" width="4%"> 신도시의 성공적인 병·의원 개원을 위한 입지분석 서비스
 
 #### 배포 주소 
->##### http://3.107.26.44:8181/IPAD/
+>##### http://54.253.194.51:8181/IPAD/
 #### 목표 
 >##### 신도시에서 개원을 하고자 하는 사용자를 위한 서비스 개발
 
