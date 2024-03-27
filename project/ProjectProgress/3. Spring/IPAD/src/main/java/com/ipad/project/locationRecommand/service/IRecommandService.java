@@ -20,7 +20,7 @@ public interface IRecommandService {
 	int minData(String option);
 	int maxData(String option);
 	List<Map<String, Object>> selectRegion();
-	double getMaxScore(ArrayList<RecommandVO> dtos);
+//	double getMaxScore(ArrayList<RecommandVO> dtos);
 	List<RecommandVO> getTop3List(List<RecommandVO> dtos);
 	
 }

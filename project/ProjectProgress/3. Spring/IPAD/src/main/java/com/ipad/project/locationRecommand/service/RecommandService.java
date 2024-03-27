@@ -126,16 +126,6 @@ public class RecommandService implements IRecommandService {
 		return recommandRepository.selectRegion();
 	}
 
-	@Override
-	public double getMaxScore(ArrayList<RecommandVO> dtos) {
-		double max = dtos.get(0).getTotalScore();
-		for (int i = 0; i < dtos.size(); i++) {
-			if (dtos.get(i).getTotalScore() > max) {
-				max = dtos.get(i).getTotalScore();
-			}
-		}
-		return max;
-	}
 
 	@Override
 	public List<RecommandVO> getTop3List(List<RecommandVO> dtos) {

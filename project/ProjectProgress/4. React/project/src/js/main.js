@@ -2,7 +2,6 @@
 import * as bootstrap from 'bootstrap';
 
 window.onload = function () {
-    console.log(123);
     const myCarousel = document.getElementById("mainCarousel")
     var carouselIndicators = myCarousel.querySelectorAll(
         ".carousel-indicators button span"

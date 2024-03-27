@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="com.ipad.project.board.dao.IBoardRepository">
+	<resultMap id="getList" type="com.ipad.project.board.model.BoardVo">
+		<result property="num" column="NUM"/>
+		<result property="writer" column="WRITER"/>
+		<result property="email" column="EMAIL"/>
+		<result property="subject" column="SUBJECT"/>
+		<result property="password" column="PASSWORD"/>
+		<result property="reg_date" column="REG_DATE"/>
+		<result property="readcount" column="READCOUNT"/>
+		<result property="content" column="CONTENT"/>
+		<result property="ref" column="REF"/>
+		<result property="re_step" column="RE_STEP"/>
+		<result property="re_level" column="RE_LEVEL"/>
+		<result property="rnum" column="RNUM"/>
+	</resultMap>
+	
+	<select id="list" parameterType="int" resultMap="getList">
+		select * from (select A.*, Rownum Rnum from (select * from memberBoard order by ref desc, re_step asc)A) where Rnum <![CDATA[ >= ]]> #{startRow} and Rnum <![CDATA[ <= ]]> #{endRow}
+	</select>
+	
+	<select id="view" parameterType="int" resultMap="getList">
+		select * from memberboard where num=#{num}
+	</select>
+	
+	<insert id="write" parameterType="com.ipad.project.board.model.BoardVo">
+	<selectKey resultType="int" keyProperty="num" order="BEFORE">
+            select count(*)+1 from MEMBERBOARD
+        </selectKey> 
+		insert into MEMBERBOARD (num, readcount, writer, subject, email, password, content, reg_date) values 
+		(#{num},0, #{writer}, #{subject}, #{email}, #{password}, #{content}, sysdate) 
+	</insert>
+	
+	<delete id="delete" parameterType="String" >
+		delete from memberboard where num = #{num}
+	</delete>
+	
+	<update id="edit" parameterType="com.ipad.project.board.model.BoardVo">
+		update memberboard set subject=#{subject}, email=#{email}, password=#{password}, content=#{content} 
+		where num =#{num}
+	</update>
+	
+	<update id="readCount" parameterType="int">
+		update MEMBERBOARD set READCOUNT = READCOUNT+1 where num = #{num} 
+	</update>
+	
+	<select id="count" resultType="int">
+		select count(*) from memberboard
+	</select>
+	
+	</mapper>

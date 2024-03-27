@@ -34,6 +34,7 @@ public class LocationRecommandController{
 		//서버 시작 실행 후 90일마다 실행
 		@Scheduled(fixedDelay=60000L*60*24*90)
 		public void init() {
+			System.out.println("이닛");
 			regionDataUpdateService.insertData();
 		}
 		//지역 추천 페이지

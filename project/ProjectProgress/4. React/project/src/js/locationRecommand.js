@@ -1,14 +1,16 @@
 // eslint-disable-next-line
-import { map } from '../component/main.jsx'
-const { kakao } = window
+import { map, kakao } from '../component/main.jsx'
+import React, { useEffect, useState } from 'react';
+import { Table, Option, Div, Form, Input } from '../component/Tag.jsx';
+import { LocationTable, ForeCastTable, Space20, Space50 } from '../component/LocationRecommand.jsx';
 window.onload = function () {
 	fetchData();
 
 	fetch(process.env.PUBLIC_URL + "/json/emd.geojson")
 		.then(response => response.json())
 		.then(geojson => {
-			var data = geojson.features;
 
+			var data = geojson.features;
 			data.forEach(val => {
 				if (val.properties.temp.includes('송파구 위례동')) {
 					songpaPoly = val.geometry.coordinates[0][0];
@@ -24,24 +26,6 @@ window.onload = function () {
 		.catch(error => {
 			console.error('Error fetching data:', error);
 		});
-
-	/*$.getJSON(process.env.PUBLIC_URL + "/json/emd.geojson", function (geojson) {
-		var data = geojson.features;
-
-		data.forEach(val => {
-			if (val.properties.temp.includes('송파구 위례동')) {
-				songpaPoly = val.geometry.coordinates[0][0];
-			}
-			if (val.properties.temp.includes('하남시 위례동')) {
-				hanamPoly = val.geometry.coordinates[0][0];
-			}
-			if (val.properties.temp.includes('성남시 위례동')) {
-				sungnamPoly = val.geometry.coordinates[0][0];
-			}
-		});
-	});
-	*/
-
 }
 
 function writeRankList() {
@@ -51,7 +35,6 @@ function writeRankList() {
 }
 
 function selectRegion(event) {
-	console.log(123124)
 	var clickedTd = event.target;
 
 	if (selectedTd) {
@@ -85,20 +68,7 @@ function showMapData(tdContent) {
 	}
 }
 
-/*function showMapData(tdContent) {
-	if (tdContent == '송파구 위례') {
-		songpaHosLoc();
-		document.getElementById('regionDetail').innerText = '송파구 위례';
-	} else if (tdContent == '성남시 위례') {
-		sungnamHosLoc();
-		document.getElementById('regionDetail').innerText = '성남시 위례';
-	} else if (tdContent == '하남시 위례') {
-		hanamHosLoc();
-		document.getElementById('regionDetail').innerText = '하남시 위례';
-	}
-}
-*/
-var list = [];
+var list = ['-', '-', '-'];
 
 function predictWrite() {
 
@@ -108,115 +78,109 @@ function predictWrite() {
 	document.getElementById('predictSale').innerText = Number(String(predictData[3]).slice(0, 4)).toLocaleString() + " 만원"
 }
 
+function GetRankList() {
+	const [checkedImpl, setCheckedImpl] = useState(false);
+	const [checkedOrth, setCheckedOrth] = useState(false);
+	const [region, setRegion] = useState('');
 
-function getRankList() {
+	const fetchData = async (impl, orth) => {
+		try {
+			const data = {
+				checkImpl: impl,
+				checkOrth: orth
+			};
+			await fetch(process.env.PUBLIC_URL + "/json/locationRecommand", {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(data)
+			})
+				.then(response => {
+					if (!response.ok) {
+						throw new Error('Network response was not ok');
+					}
+					return response.json();
+				})
+				.then(jsonArray => {
+					list = jsonArray.map(item => item.adm_nm);
+				})
 
-	var checkImpl = document.getElementById('implant').checked;
-	var checkOrth = document.getElementById('orthodontics').checked;
-	var data = {
-		checkImpl: checkImpl,
-		checkOrth: checkOrth
+				.then(() => {
+
+					writeRankList();
+					setRegion(document.getElementById('first').innerText);
+					// 이제 writeRankList가 실행된 이후에 아래 코드가 실행됩니다.
+					// var tempcon = document.getElementById('first').innerText;
+
+					// showMapData(tempcon);
+					// fetcPredictData(tempcon);
+				})
+
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
-	fetch(process.env.PUBLIC_URL + "/json/locationRecommand", {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json'
-		},
+	useEffect(() => {
+		if (region) {
+			showMapData(region);
+			fetcPredictData(region);
+		}
+	}, [region])
+	const handleImplChange = () => {
+		setCheckedImpl(!checkedImpl);
+	};
 
-		body: JSON.stringify(data)
-	})
-		.then(response => {
-			if (!response.ok) {
-				throw new Error('Network response was not ok');
-			}
-			return response.json();
-		})
-		.then(jsonArray => {
+	const handleOrthChange = () => {
+		setCheckedOrth(!checkedOrth);
+	};
 
-			list.length = 0;
+	const handleSearchBtnClick = () => {
+		fetchData(checkedImpl, checkedOrth);
+	};
 
-			for (let i = 0; i < jsonArray.length; i++) {
-				list.push(jsonArray[i]["adm_nm"]);
-
-			}
-		})
-		.then(() => {
-			writeRankList();
-
-			// 이제 writeRankList가 실행된 이후에 아래 코드가 실행됩니다.
-			var tempcon = document.getElementById('first').innerText;
-			showMapData(tempcon);
-			fetcPredictData(tempcon);
-		})
-
-		.catch(error => {
-			console.error('에러 발생:', error);
-		});
-
-}
-
-function mapMenuClick(e) {
-	document.querySelector('#mapMenu').innerHTML = e.innerHTML;
-	document.querySelector('#areaMenu').style.display = 'none';
-	var selall = document.querySelectorAll('.tempNum');
-	for (let i = 0; i < selall.length; i++) {
-		selall[i].innerHTML = e.innerHTML;
+	function OptionTable(props) {
+		return (
+			<Table className='table'>
+				<Option type='checkbox' name='임플란트' value='implant' checked={checkedImpl} onChange={handleImplChange} />
+				<Option type='checkbox' name='교정' value='orthodontics' checked={checkedOrth} onChange={handleOrthChange} />
+			</Table>
+		);
 	}
+
+	return (
+		<>
+			<Div className="col-lg-3">
+				<Div className="boxShadow vertical1">
+					<Div className="section">
+						<Div className="subtitle" text='희망 분야'></Div>
+						<Space20 />
+						<Form action="submit.do" method="post">
+							<OptionTable />
+							<Input id="searchBtn" type="button" value="추천 지역 검색" onClick={handleSearchBtnClick} />
+						</Form>
+					</Div>
+				</Div>
+				<Div className="boxShadow vertical2">
+					<Space20 />
+					<Div className="section">
+						<Div className="subtitle" text='추천 지역'></Div>
+						<Space20 />
+						<LocationTable />
+						<Space50 />
+						<Div className="subtitle" id="regionDetail" text='지역 정보'></Div>
+						<Space20 />
+						<ForeCastTable />
+					</Div>
+				</Div>
+			</Div>
+		</>
+	);
 }
-
-function clickPopUpBtn(e) {
-	document.querySelector('#selectArea').innerHTML = e.innerHTML;
-}
-
-function clickHosCnt() {
-	document.querySelector('#areaMenu').style.display = 'block';
-}
-
-function hosLocClick(e) {
-	document.querySelector('#areaMenu').innerHTML = e.innerHTML;
-}
-
-var t = document.querySelector('#hosLocT');
-
-
-// var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-// 	mapOption = {
-// 		center: new kakao.maps.LatLng(37.47601668950402, 127.15099417223486), // 지도의
-// 		// 중심좌표
-// 		level: 6, // 지도의 확대 레벨
-// 		disableDoubleClickZoom: true,
-// 		scrollwheel: false,
-// 		draggable: false
-// 	};
-
-// var map = new kakao.maps.Map(mapContainer, mapOption);
-
-// -----------------------------------------------------------------------
-
-var markerPosition1 = new kakao.maps.LatLng(37.47860551575809, 127.16237294151435);
-var markerPosition2 = new kakao.maps.LatLng(37.48274629824583, 127.13696522477319);
-var markerPosition3 = new kakao.maps.LatLng(37.468393767232406, 127.14408328318119);
-
-var marker1 = new kakao.maps.Marker({
-	position: markerPosition1
-});
-var marker2 = new kakao.maps.Marker({
-	position: markerPosition2
-});
-var marker3 = new kakao.maps.Marker({
-	position: markerPosition3
-});
 
 // 지도에 표시 -------------------------------------------------------------
 var moveLatLon;
-
-function addArea() {
-	deleteArea();
-	displayArea(songpaPoly);
-	displayArea(hanamPoly);
-	displayArea(sungnamPoly);
-}
 
 function songpaHosLoc() {
 
@@ -287,7 +251,6 @@ var predictData = [];
 function fetcPredictData(regionName) {
 	var data =
 		{ name: regionName }
-
 	fetch(process.env.PUBLIC_URL + '/json/predict', {
 		method: 'POST',
 		headers: {
@@ -356,11 +319,12 @@ var overlayDel = new kakao.maps.CustomOverlay({
 	yAnchor: 3,
 	position: null
 });
+
 var openHosImg = process.env.PUBLIC_URL + "/img/hosMark.png";
 var closeHosImg = process.env.PUBLIC_URL + "/img/closeHosMark.png";
 var imageSize = new kakao.maps.Size(20, 20);
-var hos = document.getElementById('hos');
-var hosLoc = document.getElementById('hosLoc');
+// var hos = document.getElementById('hos');
+// var hosLoc = document.getElementById('hosLoc');
 
 var currentInfoWindow = null;
 
@@ -443,6 +407,7 @@ function deleteArea() {
 	polygon.forEach(coordinate => coordinate.setMap(null));
 }
 
+/* 
 function showCustomOverlay(data, infoContent) {
 	document.getElementById('hospitalName').innerText = data.hospital_name;
 	document.getElementById('infoContent').innerText = infoContent;
@@ -469,7 +434,7 @@ function showCustomOverlay(data, infoContent) {
 		customOverlayObj.setMap(null);
 	};
 }
-
+*/
 var selectedTd = null;
 
-export { selectRegion, getRankList };
+export { selectRegion, GetRankList };
