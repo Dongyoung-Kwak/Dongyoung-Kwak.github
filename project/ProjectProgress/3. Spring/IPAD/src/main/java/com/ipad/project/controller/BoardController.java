@@ -37,19 +37,20 @@ public class BoardController {
 	@RequestMapping("/board/boardWriteCheck.do")
 	public String writeCheck(BoardVo board, Model model) {
 		boardService.write(board);
-		return "redirect:/board/boardList.do";
+		return "redirect:/board/boardList.do?pageNum=1";
 	}
 	@RequestMapping("/board/boardWriteViewCheck.do")
 	public String view(@RequestParam("num") int num, Model model) {
 		boardService.readCount(num);
 		model.addAttribute("list", boardService.view(num));
-		
+		model.addAttribute("count", boardService.replyCount(num));
+		model.addAttribute("replyList", boardService.replyList(String.valueOf(num)));
 		return "/board/boardWriteView";
 	}
 	@PostMapping("/board/boardWriteDelete.do")
     public String deleteBoard(@RequestParam("num") String num, @RequestParam("password") String password) {
 		boardService.delete(num);
-		return "redirect:/board/boardList.do";
+		return "redirect:/board/boardList.do?pageNum=1";
 	}
 	
 	@RequestMapping("/board/boardWriteEdit.do")
@@ -60,6 +61,12 @@ public class BoardController {
 	@RequestMapping("/board/boardWriteUpdateCheck.do")
 	public String updateCheck(BoardVo board, Model model) {
 			boardService.edit(board);
-		return "redirect:/board/boardList.do";
+		return "redirect:/board/boardList.do?pageNum=1";
+	}
+	@RequestMapping("/board/boardReWriter.do")
+	public String rewrite(@RequestParam("replyText") String text,@RequestParam("num") String num, Model model) {
+		boardService.reply(text, num);
+//		model.addAttribute("replyList", boardService.replyList(num));
+		return "redirect:/board/boardWriteViewCheck.do?num="+num;
 	}
 }

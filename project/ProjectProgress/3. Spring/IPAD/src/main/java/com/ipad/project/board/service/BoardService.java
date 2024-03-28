@@ -1,6 +1,8 @@
 package com.ipad.project.board.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,11 +34,12 @@ public class BoardService implements IBoardService{
 
 	@Override
 	public List<BoardVo> list(String pageNum) {
+		Map<String, Integer> map = new HashMap<>();
 		int startRow = (Integer.parseInt(pageNum)-1) * 10;
 		int endRow = Integer.parseInt(pageNum)*10;
-		int number = boardRepository.count()-(Integer.parseInt(pageNum)-1)*10;
-		System.out.println(startRow+"   " + endRow+"   " + number);
-		return boardRepository.list(startRow, endRow);
+		map.put("startRow", startRow);
+		map.put("endRow", endRow);		
+		return boardRepository.list(map);
 	}
 
 	@Override
@@ -52,6 +55,24 @@ public class BoardService implements IBoardService{
 	@Override
 	public int count() {
 		return boardRepository.count();
+	}
+
+	@Override
+	public void reply(String text, String num) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("text", text);
+		map.put("num", Integer.parseInt(num));
+		boardRepository.reply(map);
+	}
+
+	@Override
+	public List<BoardVo> replyList(String num) {
+		return boardRepository.replyList(Integer.parseInt(num));
+	}
+
+	@Override
+	public int replyCount(int num) {
+		return boardRepository.replyCount(num);
 	}
 	
 	

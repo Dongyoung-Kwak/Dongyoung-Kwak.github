@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -26,8 +26,9 @@
     <div class="container" id="qImgBox">
         <img src="${pageContext.request.contextPath}/img/Q&A.jpg"  alt="">
     </div>
-
+<c:forEach var="bDto" items="${list}">
     <div class="container">
+    
         <div class="row" id="qWrite">
             <table>
                 <div class="col-12">
@@ -81,7 +82,7 @@
     </div>
     </form>
 
-  
+  </c:forEach>
 	 <%@ include file="/WEB-INF/views/common/footer.jsp"%>
 </body>
 

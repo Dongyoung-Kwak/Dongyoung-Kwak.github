@@ -17,8 +17,8 @@
 		<result property="rnum" column="RNUM"/>
 	</resultMap>
 	
-	<select id="list" parameterType="int" resultMap="getList">
-		select * from (select A.*, Rownum Rnum from (select * from memberBoard order by ref desc, re_step asc)A) where Rnum <![CDATA[ >= ]]> #{startRow} and Rnum <![CDATA[ <= ]]> #{endRow}
+	<select id="list" parameterType="map" resultMap="getList">
+		select * from (select A.*, Rownum Rnum from (select * from memberBoard order by num desc)A) where Rnum <![CDATA[ > ]]> #{startRow} and Rnum <![CDATA[ <= ]]> #{endRow} and num != 0
 	</select>
 	
 	<select id="view" parameterType="int" resultMap="getList">
@@ -26,11 +26,9 @@
 	</select>
 	
 	<insert id="write" parameterType="com.ipad.project.board.model.BoardVo">
-	<selectKey resultType="int" keyProperty="num" order="BEFORE">
-            select count(*)+1 from MEMBERBOARD
-        </selectKey> 
-		insert into MEMBERBOARD (num, readcount, writer, subject, email, password, content, reg_date) values 
-		(#{num},0, #{writer}, #{subject}, #{email}, #{password}, #{content}, sysdate) 
+	
+		insert into MEMBERBOARD (num, ref, readcount, writer, subject, email, password, content, reg_date) values 
+		(memberboard_seq.nextVal, memberboard_seq.nextVal, 0, #{writer}, #{subject}, #{email}, #{password}, #{content}, sysdate) 
 	</insert>
 	
 	<delete id="delete" parameterType="String" >
@@ -48,6 +46,18 @@
 	
 	<select id="count" resultType="int">
 		select count(*) from memberboard
+	</select>
+	
+	<insert id="reply" parameterType="com.ipad.project.board.model.BoardVo">
+		insert into memberboard (num, ref, content, reg_date) values (0, #{num}, #{text}, sysdate)
+	</insert>
+	
+	<select id="replyList" parameterType="int" resultMap="getList">
+		select * from memberboard where ref=#{num} and num != #{num} 
+	</select>
+	
+	<select id="replyCount" parameterType="int" resultType="int">
+		select count(*) from memberboard where ref = #{num} and num != #{num}
 	</select>
 	
 	</mapper>

@@ -12,4 +12,7 @@ public interface IBoardService {
 	public List<BoardVo> list(String pageNum);
 	public List<BoardVo> view(int num);
 	public int count();
+	public void reply(String text, String num);
+	public List<BoardVo> replyList(String num);
+	public int replyCount(int num);
 }

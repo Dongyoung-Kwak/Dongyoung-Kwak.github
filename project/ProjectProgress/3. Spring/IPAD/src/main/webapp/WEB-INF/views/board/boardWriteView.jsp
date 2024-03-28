@@ -29,28 +29,35 @@
 
 <body>
 
-	  <%@ include file="/WEB-INF/views/common/header.jsp"%>
-	
+	<%@ include file="/WEB-INF/views/common/header.jsp"%>
+
 	<div class="container" id="qImgBox">
 		<img src="${pageContext.request.contextPath}/img/Q&A.jpg" alt="">
 	</div>
 
 	<div class="container">
 		<div class="row" id="qWriteView">
-			<table>
+			<table style="text-align : center;">
 				<div class="col-12">
-					<tr id="qWriteViewTable">
-						<td>${bDto.subject }</td>
-					</tr>
-					<tr id="qWriteViewTable">
-						<td style="width: 10%;">${bDto.writer }</td>
-						<td>${bDto.reg_date }</td>
-						<td style="text-align: right;">${bDto.readcount }</td>
-					</tr>
-					<tr id="qWriteViewTable" style="height: 400px;">
-						<td>${bDto.content }</td>
-					</tr>
-
+					<c:forEach var="bDto" items="${list}">
+						<tr id="qWriteViewTable">
+							<td style="width: 5%; border-right : 1px solid rgb(220, 220, 220)">제목</td>
+							<td>${bDto.subject}</td>
+						</tr>
+						<tr id="qWriteViewTable" ">
+							<td style="width : 5%;border-right : 1px solid rgb(220, 220, 220) ">작성자</td>
+							<td style="width: 5%;">${bDto.writer }</td>
+							<td style="width : 60%; border-right : 1px solid rgb(220, 220, 220) "></td>
+							<td style="width : 10%; border-right : 1px solid rgb(220, 220, 220) ">작성 일자</td>							
+							<td style="width : 10%; border-right : 1px solid rgb(220, 220, 220) ">${bDto.reg_date }</td>
+							<td style="width : 5%; border-right : 1px solid rgb(220, 220, 220) ">조회수</td>
+							<td style="text-align: right; width:5%">${bDto.readcount }</td>
+						</tr>
+						<tr id="qWriteViewTable" style="height: 400px;">
+							<td style="width : 5%;border-right : 1px solid rgb(220, 220, 220)">내 용</td>
+							<td>${bDto.content }</td>
+						</tr>
+					</c:forEach>
 				</div>
 			</table>
 		</div>
@@ -69,30 +76,64 @@
 
 
 
-	
+
 	<div class="container">
+		<%--
 		<c:set var="writeUser" value="${sessionScope.writeUser}" />
 		<c:choose>
 			<c:when test="${isWriter}">
+ --%>
 
+		<!-- 글 작성자인 경우 -->
+		<div class="col-12" id="qWriteViewButtonBox">
+			<div class="qWriteViewButton">
+				<form id="deleteForm"
+					action="${pageContext.request.contextPath}/board/boardWriteDelete.do"
+					method="post">
+					<!-- 기타 필요한 hidden input 등을 추가 -->
+				<c:forEach items="${list}" var="bDto">
+						<input type="hidden" name="num" value="${bDto.num}">
+						<input type="hidden" name="password">
+				</form>
+				 <a><button id="delete" onclick="showDeleteModal()">삭제</button></a> 
+				<a><button
+						onclick="location.href='${pageContext.request.contextPath}/board/boardWriteEdit.do?num=${bDto.num}'">수정</button></a>
+				<a><button
+						onclick="location.href='${pageContext.request.contextPath}/board/boardList.do?pageNum=1'">목록</button></a>
+			</div>
+			</c:forEach>
+		</div>
 
-				<!-- 글 작성자인 경우 -->
-				<div class="col-12" id="qWriteViewButtonBox">
-					<div class="qWriteViewButton">
-						<form id="deleteForm"
-							action="${pageContext.request.contextPath}/board/boardWritedelet.do"
-							method="post">
-							<!-- 기타 필요한 hidden input 등을 추가 -->
-							<input type="hidden" name="num" value="${bDto.num}"> 
-							<input type="hidden" name="password">
-						</form>
-						<a><button id="delete" onclick="showDeleteModal()">삭제</button></a>
-						<a><button
-								onclick="location.href='${pageContext.request.contextPath}/board/boardWritedelet.do?num=${bDto.num}'">수정</button></a>
-						<a><button
-								onclick="location.href='${pageContext.request.contextPath}/board/boardList.do'">목록</button></a>
-					</div>
-				</div>
+		<div style="margin-top: 100px">
+			<div>
+				<table
+					style="width: 100%; border-collapse: collapse; border: 2px solid #ddd;">
+					<thead>
+						<tr>
+							<th
+								style="padding: 8px; background-color: #f2f2f2; border: 1px solid #ddd; width: 70%">댓글
+								내용</th>
+							<th
+								style="padding: 8px; background-color: #f2f2f2; border: 1px solid #ddd; width: 15%">작성자</th>
+							<th
+								style="padding: 8px; background-color: #f2f2f2; border: 1px solid #ddd; width: 10%">작성일</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="reply" items="${replyList}">
+							<tr>
+								<td style="padding: 8px; border: 1px solid #ddd;">${reply.content}</td>
+								<!-- 작성자 정보가 있다면 활성화 -->
+								<!-- <td>${reply.writer}</td> -->
+								<!-- 작성자 정보가 없다면 비활성화 -->
+								<td style="padding: 8px; border: 1px solid #ddd;">미상</td>
+								<td style="padding: 8px; border: 1px solid #ddd;">${reply.reg_date}</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+			<%--
 			</c:when>
 			<c:otherwise>
 				<!-- 글 작성자가 아닌 경우 -->
@@ -107,63 +148,70 @@
 				</div>
 			</c:otherwise>
 		</c:choose>
-	</div>
-
-
-
-
-
-
-	<div class="container">
-		<h6 style="margin-top: 5%;">N개의 댓글</h6>
-		<div class="row">
-			<table>
-				<div class="col-12">
-					<tr class="qWriteViewcomment">
-						<td><input onclick="location.href='boardReWriter.do'"
-							type="text" placeholder="내용을 입력해주세요">
-							<button>등록</button></td>
-
-					</tr>
-				</div>
-			</table>
+		 --%>
 		</div>
-	</div>
 
-	<div class="qWBottom">
-		<button type="button" class="btn btn-primary">확인</button>
-		<button type="button" class="btn btn-primary">취소</button>
-	</div>
 
-	<footer>
+
+
+
+
 		<div class="container">
-			<div class="row" style="width: 100%; margin-top: 40%;">
-				<div class="col-lg-3" style="margin-left: 5%;">
-					<ul id="logo">
-						<li>GROWTH</li>
-					</ul>
-
-				</div>
-
-
-				<div class="col-lg-9" style="margin-left: 5%;">
-					<ul id="text">
-						<li>회사소개</li>
-						<li>이용약관</li>
-						<li>개인정보취급방침</li>
-					</ul>
-					<br>
-
-					<ul id="text1">
-						<li>고객센터 : 1588-1588</li>
-						<li>주소 : 서울시 강남구 테헤란로 111 강남빌딩</li>
-					</ul>
-				</div>
+			<h6 style="margin-top: 5%;">${count}개의댓글</h6>
+			<div class="row">
+				<!-- <form action="${pageContext.request.contextPath}/board/boardReWriter.do" method="post"> -->
+				<table>
+					<div class="col-12">
+						<tr class="qWriteViewcomment">
+							<c:forEach var="bDto" items="${list}">
+								<form
+									action="${pageContext.request.contextPath}/board/boardReWriter.do?num=${bDto.num}"
+									method="post">
+									<td><input type="text" name="replyText"
+										placeholder="내용을 입력해주세요">
+										<button type="submit">등록</button></td>
+								</form>
+							</c:forEach>
+						</tr>
+					</div>
+				</table>
+				<!-- 			</form> -->
 			</div>
-	</footer>
+		</div>
 
-	<script src="${pageContext.request.contextPath}/js/board.js"></script>
+		<div class="qWBottom">
+			<button type="button" class="btn btn-primary">확인</button>
+			<button type="button" class="btn btn-primary">취소</button>
+		</div>
 
+		<footer>
+			<div class="container">
+				<div class="row" style="width: 100%; margin-top: 40%;">
+					<div class="col-lg-3" style="margin-left: 5%;">
+						<ul id="logo">
+							<li>GROWTH</li>
+						</ul>
+
+					</div>
+
+
+					<div class="col-lg-9" style="margin-left: 5%;">
+						<ul id="text">
+							<li>회사소개</li>
+							<li>이용약관</li>
+							<li>개인정보취급방침</li>
+						</ul>
+						<br>
+
+						<ul id="text1">
+							<li>고객센터 : 1588-1588</li>
+							<li>주소 : 서울시 강남구 테헤란로 111 강남빌딩</li>
+						</ul>
+					</div>
+				</div>
+		</footer>
+
+		<script src="${pageContext.request.contextPath}/js/board.js"></script>
 </body>
 
 

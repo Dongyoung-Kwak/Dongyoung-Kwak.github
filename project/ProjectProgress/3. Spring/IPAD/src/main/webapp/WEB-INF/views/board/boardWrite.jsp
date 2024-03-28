@@ -33,7 +33,8 @@
                 <div class="col-12">
                     <tr id="qWriteTable">
                         <td id="qWriteTableName">작성자</td>
-                        <td><input type="text" name="writer" readonly="readonly" id="inputType" value="${loggedInUser.name }"></td>
+                        <td><input type="text" name="writer"  id="inputType" ></td>
+                     <!--    readonly="readonly" value="${loggedInUser.name }" -->
                     </tr>
                     <tr id="qWriteTable">
                         <td id="qWriteTableName">제목</td>

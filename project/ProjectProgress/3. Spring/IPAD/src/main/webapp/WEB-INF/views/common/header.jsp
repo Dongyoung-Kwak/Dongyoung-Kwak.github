@@ -43,7 +43,7 @@
 							</ul>
 						</div>
 					</li>
-					<li class="nav-item mx-5"><a class="nav-link" href="${pageContext.request.contextPath}/board/boardList.do">Q&A</a>
+					<li class="nav-item mx-5"><a class="nav-link" href="${pageContext.request.contextPath}/board/boardList.do?pageNum=1">Q&A</a>
 					</li>
 				</ul>
 				
