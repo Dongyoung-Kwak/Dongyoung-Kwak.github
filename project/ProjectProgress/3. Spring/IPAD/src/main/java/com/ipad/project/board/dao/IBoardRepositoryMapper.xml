@@ -49,7 +49,7 @@
 	</select>
 	
 	<insert id="reply" parameterType="com.ipad.project.board.model.BoardVo">
-		insert into memberboard (num, ref, content, reg_date) values (0, #{num}, #{text}, sysdate)
+		insert into memberboard (num, ref, content, reg_date) values (0, #{num}, #{text}, TO_CHAR(sysdate, 'YYYY-MM-DD HH24:MI:SS'))
 	</insert>
 	
 	<select id="replyList" parameterType="int" resultMap="getList">

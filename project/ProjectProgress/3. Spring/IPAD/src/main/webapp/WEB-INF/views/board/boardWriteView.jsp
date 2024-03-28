@@ -12,6 +12,12 @@
 
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/boardWriteView.css">
+	link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 <!-- <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-theme.min.css"> -->
 <link
@@ -167,7 +173,7 @@
 								<form
 									action="${pageContext.request.contextPath}/board/boardReWriter.do?num=${bDto.num}"
 									method="post">
-									<td><input type="text" name="replyText"
+									<td><input type="text" name="replyText" required 
 										placeholder="내용을 입력해주세요">
 										<button type="submit">등록</button></td>
 								</form>
