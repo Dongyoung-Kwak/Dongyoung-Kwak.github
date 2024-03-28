@@ -12,7 +12,7 @@
 
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/boardWriteView.css">
-	link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap">
@@ -43,24 +43,29 @@
 
 	<div class="container">
 		<div class="row" id="qWriteView">
-			<table style="text-align : center;">
+			<table style="text-align: center;">
 				<div class="col-12">
 					<c:forEach var="bDto" items="${list}">
 						<tr id="qWriteViewTable">
-							<td style="width: 5%; border-right : 1px solid rgb(220, 220, 220)">제목</td>
+							<td style="width: 5%; border-right: 1px solid rgb(220, 220, 220)">제목</td>
 							<td>${bDto.subject}</td>
 						</tr>
-						<tr id="qWriteViewTable" ">
-							<td style="width : 5%;border-right : 1px solid rgb(220, 220, 220) ">작성자</td>
+						<tr id="qWriteViewTable"">
+							<td style="width: 5%; border-right: 1px solid rgb(220, 220, 220)">작성자</td>
 							<td style="width: 5%;">${bDto.writer }</td>
-							<td style="width : 60%; border-right : 1px solid rgb(220, 220, 220) "></td>
-							<td style="width : 10%; border-right : 1px solid rgb(220, 220, 220) ">작성 일자</td>							
-							<td style="width : 10%; border-right : 1px solid rgb(220, 220, 220) ">${bDto.reg_date }</td>
-							<td style="width : 5%; border-right : 1px solid rgb(220, 220, 220) ">조회수</td>
-							<td style="text-align: right; width:5%">${bDto.readcount }</td>
+							<td
+								style="width: 60%; border-right: 1px solid rgb(220, 220, 220)"></td>
+							<td
+								style="width: 10%; border-right: 1px solid rgb(220, 220, 220)">작성
+								일자</td>
+							<td
+								style="width: 10%; border-right: 1px solid rgb(220, 220, 220)">${bDto.reg_date }</td>
+							<td style="width: 5%; border-right: 1px solid rgb(220, 220, 220)">조회수</td>
+							<td style="text-align: right; width: 5%">${bDto.readcount }</td>
 						</tr>
 						<tr id="qWriteViewTable" style="height: 400px;">
-							<td style="width : 5%;border-right : 1px solid rgb(220, 220, 220)">내 용</td>
+							<td style="width: 5%; border-right: 1px solid rgb(220, 220, 220)">내
+								용</td>
 							<td>${bDto.content }</td>
 						</tr>
 					</c:forEach>
@@ -97,12 +102,11 @@
 					action="${pageContext.request.contextPath}/board/boardWriteDelete.do"
 					method="post">
 					<!-- 기타 필요한 hidden input 등을 추가 -->
-				<c:forEach items="${list}" var="bDto">
+					<c:forEach items="${list}" var="bDto">
 						<input type="hidden" name="num" value="${bDto.num}">
 						<input type="hidden" name="password">
 				</form>
-				 <a><button id="delete" onclick="showDeleteModal()">삭제</button></a> 
-				<a><button
+				<a><button id="delete" onclick="showDeleteModal()">삭제</button></a> <a><button
 						onclick="location.href='${pageContext.request.contextPath}/board/boardWriteEdit.do?num=${bDto.num}'">수정</button></a>
 				<a><button
 						onclick="location.href='${pageContext.request.contextPath}/board/boardList.do?pageNum=1'">목록</button></a>
@@ -173,7 +177,7 @@
 								<form
 									action="${pageContext.request.contextPath}/board/boardReWriter.do?num=${bDto.num}"
 									method="post">
-									<td><input type="text" name="replyText" required 
+									<td><input type="text" name="replyText" required
 										placeholder="내용을 입력해주세요">
 										<button type="submit">등록</button></td>
 								</form>
