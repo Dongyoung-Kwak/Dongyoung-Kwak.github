@@ -48,7 +48,7 @@
 					<c:forEach var="bDto" items="${list}">
 						<tr id="qWriteViewTable">
 							<td style="width: 5%; border-right: 1px solid rgb(220, 220, 220)">제목</td>
-							<td>${bDto.subject}</td>
+							<td style="width: 95%;">${bDto.subject}</td>
 						</tr>
 						<tr id="qWriteViewTable"">
 							<td style="width: 5%; border-right: 1px solid rgb(220, 220, 220)">작성자</td>
@@ -66,7 +66,7 @@
 						<tr id="qWriteViewTable" style="height: 400px;">
 							<td style="width: 5%; border-right: 1px solid rgb(220, 220, 220)">내
 								용</td>
-							<td>${bDto.content }</td>
+							<td style="width:95%;">${bDto.content }</td>
 						</tr>
 					</c:forEach>
 				</div>

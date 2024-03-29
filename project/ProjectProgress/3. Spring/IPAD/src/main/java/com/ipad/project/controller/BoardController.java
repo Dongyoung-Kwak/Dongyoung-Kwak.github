@@ -30,7 +30,7 @@ public class BoardController {
 		return mv;
 	}
 
-	@PostMapping("/board/boardListWriteClickAction.do")
+	@RequestMapping("/board/boardListWriteClickAction.do")
 	public String write(Model model) {
 		return "/board/boardWrite";
 	}

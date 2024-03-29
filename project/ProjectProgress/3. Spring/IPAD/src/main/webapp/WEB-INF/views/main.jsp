@@ -134,7 +134,7 @@
 							<h6>
 								신도시 유동인구와 거주인구를 파악하여 <br> 어느입지에 치과를 설립해야 유리할까?
 							</h6>
-							<a href="populationStatus.html" class="btn">자세히 보기</a>
+							<a href="${pageContext.request.contextPath}/locationAnalysis/population.do" class="btn">자세히 보기</a>
 						</div>
 						<div>
 							<h2>치과 현황</h2>
@@ -142,7 +142,7 @@
 							<h6>
 								주변의 치과의원 수와 <br> 개업 · 폐업의 수를 파악하여 개업이 가능할까?
 							</h6>
-							<a href="hospitalStatus.html" class="btn">자세히 보기</a>
+							<a href="${pageContext.request.contextPath}/locationAnalysis/hospital.do" class="btn">자세히 보기</a>
 						</div>
 					</div>
 				</div>
@@ -157,7 +157,7 @@
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<h1 id="analysisTitle">성공적인 개업을 위한 매출 분석</h1>
 					<h6>
-						정확한 분석을 원하시면 <a href="search.html">여기</a>를 클릭해주세요
+						정확한 분석을 원하시면 <a href="${pageContext.request.contextPath}/saleAnalysis/search.do">여기</a>를 클릭해주세요
 					</h6>
 				</div>
 			</div>
@@ -203,7 +203,7 @@
 			<!-- 본문3 오른쪽(게시판)------------------------------------------------------------------------------------------->
 			<div id="boardRight" class="col-lg-6 ">
 				<div id="title">
-					<a href="#">Q&A</a>
+					<a href="${pageContext.request.contextPath}/board/boardList.do?pageNum=1">Q&A</a>
 				</div>
 				<table class="table">
 					<colgroup>
@@ -214,46 +214,13 @@
 					<thead>
 					</thead>
 					<tbody>
+					<c:forEach var="bDto" items="${list}">
 						<tr>
-							<th>1</th>
-							<td><a href="">게시글 1</a></td>
-							<td>2022-02-22</td>
+							<th>${bDto.num }</th>
+							<td><a href="${pageContext.request.contextPath}/board/boardWriteViewCheck.do?num=${bDto.num}">${bDto.subject}</a></td>
+							<td>${bDto.reg_date}</td>
 						</tr>
-						<tr>
-							<th>2</th>
-							<td><a href="">게시글 2</a></td>
-							<td>2022-02-22</td>
-						</tr>
-						<tr>
-							<th>3</th>
-							<td><a href="">게시글 3</a></td>
-							<td>2022-02-22</td>
-						</tr>
-						<tr>
-							<th>4</th>
-							<td><a href="">게시글 4</a></td>
-							<td>2022-02-22</td>
-						</tr>
-						<tr>
-							<th>5</th>
-							<td><a href="">게시글 5</a></td>
-							<td>2022-02-22</td>
-						</tr>
-						<tr>
-							<th>6</th>
-							<td><a href="">게시글 6</a></td>
-							<td>2022-02-22</td>
-						</tr>
-						<tr>
-							<th>7</th>
-							<td><a href="">게시글 7</a></td>
-							<td>2022-02-22</td>
-						</tr>
-						<tr>
-							<th>8</th>
-							<td><a href="">게시글 8</a></td>
-							<td>2022-02-22</td>
-						</tr>
+					</c:forEach>	
 					</tbody>
 				</table>
 			</div>
