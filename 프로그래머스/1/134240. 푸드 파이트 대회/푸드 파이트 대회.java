@@ -15,13 +15,8 @@ class Solution {
 			}
 			
 		}
-		answer.append(0);
-		for(int i=array.length-1; i>=0;i-- ) {
-			for(int j=0; j<array[i];j++) {
-				answer.append(i+1);
-			}
-		}
 		
-        return answer.toString();
+		
+        return answer.toString()+"0"+answer.reverse().toString();
     }
 }
